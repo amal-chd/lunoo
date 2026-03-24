@@ -15,6 +15,7 @@ import Terms from './pages/Terms';
 import Pricing from './pages/Pricing';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import CookieConsent from './components/CookieConsent';
 import './App.css';
@@ -37,6 +38,7 @@ function AnimatedRoutes() {
           <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
           <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+          <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
