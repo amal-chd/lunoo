@@ -1,92 +1,105 @@
-import { Heart, Users, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Zap, Globe, Users } from 'lucide-react';
 
 export default function About() {
   const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
-  const containerVariant: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
   };
 
   return (
-    <div style={{ paddingBottom: '10rem', position: 'relative' }}>
-      <div className="blob-shape blob-1" style={{ top: '5%', left: '-10%' }}></div>
-      <div className="blob-shape blob-3" style={{ bottom: '10%', right: '-10%' }}></div>
-
-      <section className="about-hero" style={{ paddingTop: '16rem', paddingBottom: '6rem', textAlign: 'center' }}>
-         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}>
-           <h1 className="hero-title" style={{ maxWidth: '1000px', margin: '0 auto', fontSize: 'clamp(4rem, 10vw, 7rem)', lineHeight: '1' }}>
-             Built for <span className="gradient-text">every type of mind.</span>
-           </h1>
-         </motion.div>
+    <>
+      <section className="hero-wrapper" style={{ paddingBottom: '3rem' }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="hero-pill-badge">
+            <span style={{ color: "var(--text-light)" }}>✦</span> The Lunoo Story
+          </div>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}
+          className="hero-title"
+          style={{ fontSize: '5rem' }}
+        >
+          Built for the<br/>mindful few.
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          We set out to create more than just a tool. We built a philosophy —<br/>
+          a Digital Sanctum where your growth is the only notification that matters.
+        </motion.p>
       </section>
 
-      <section className="container">
-        <motion.div 
-           initial="hidden" animate="visible" variants={fadeUp}
-           className="glass-panel" style={{ padding: '6rem 4rem', boxShadow: 'var(--shadow-lg)', border: '1px solid rgba(255,255,255,0.8)' }}
-        >
-           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-              <p style={{ fontSize: '1.6rem', color: 'var(--text-main)', fontWeight: 600, marginBottom: '3rem', lineHeight: '1.4' }}>
-                Lunoo started as a small personal project in a bedroom, driven by a simple question: "Why is most software built for only one way of thinking?"
-              </p>
-              <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '4rem', lineHeight: '1.8' }}>
-                We noticed that traditional planners and lists were often way too rigid, causing more stress than support. We set out to build something that honors different types of minds. Inspired by the principles of neuroinclusivity, Lunoo uses visual cues and soft focus to make getting things done feel completely natural.
-              </p>
-              
-              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 40px 80px rgba(0,0,0,0.2)', marginBottom: '8rem' }}>
-                <img src="/screenshots/profile.png" alt="A look into Lunoo" style={{ width: '100%', display: 'block' }} />
-              </motion.div>
-           </div>
-           
-           <div style={{ height: '1px', background: 'rgba(0,0,0,0.05)', margin: '4rem 0' }}></div>
+      {/* Philosophy Overlap */}
+      <section className="container" style={{ padding: '8rem 2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
+           {[
+             { icon: Users, title: 'The Community', color: '#ff6d00', desc: 'Born from a global community of neurodivergent thinkers and productivity enthusiasts.' },
+             { icon: Globe, title: 'Distributed Trust', color: '#9d4edd', desc: 'Secure, local-first architecture that works offline and syncs across the globe.' },
+             { icon: Zap, title: 'Pure Intent', color: '#10b981', desc: 'Zero ads, zero bloat, and zero hidden agendas. Just you and your goals.' }
+           ].map((item, i) => (
+             <motion.div 
+               key={i}
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               transition={{ delay: i * 0.1 }}
+               viewport={{ once: true }}
+               className="glass-panel" 
+               style={{ padding: '3.5rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}
+             >
+                <item.icon color={item.color} size={32} style={{ marginBottom: '2rem' }} />
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.2rem', color: '#fff' }}>{item.title}</h3>
+                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>{item.desc}</p>
+             </motion.div>
+           ))}
+        </div>
+      </section>
 
-           <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-              <h3 style={{ fontSize: '3rem', color: 'var(--text-main)', marginBottom: '1.5rem' }}>Our core values.</h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>What drives our roadmap every single day.</p>
-           </div>
-
-           <motion.div 
-              variants={containerVariant} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '4rem' }}
-           >
-              <motion.div variants={fadeUp} style={{ textAlign: 'center' }}>
-                 <div style={{ background: 'linear-gradient(135deg, var(--secondary) 0%, #ff8fa3 100%)', width: '90px', height: '90px', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', boxShadow: '0 15px 30px rgba(255,107,139,0.3)' }}>
-                    <ShieldCheck size={40} color="#fff" />
-                 </div>
-                 <h4 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Privacy first.</h4>
-                 <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>Your routines are yours alone. We don't track you. Period.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUp} style={{ textAlign: 'center' }}>
-                 <div style={{ background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%)', width: '90px', height: '90px', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', boxShadow: '0 15px 30px rgba(92,111,255,0.3)' }}>
-                    <Users size={40} color="#fff" />
-                 </div>
-                 <h4 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Community Scale.</h4>
-                 <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>Sustaining thousands of neuro-diverse users worldwide daily.</p>
-              </motion.div>
-
-              <motion.div variants={fadeUp} style={{ textAlign: 'center' }}>
-                 <div style={{ background: 'linear-gradient(135deg, var(--accent-green) 0%, #0093e9 100%)', width: '90px', height: '90px', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2rem', boxShadow: '0 15px 30px rgba(0,210,138,0.3)' }}>
-                    <Heart size={40} color="#fff" />
-                 </div>
-                 <h4 style={{ fontSize: '1.8rem', marginBottom: '1rem' }}>Neuro-inclusive.</h4>
-                 <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>Digital tools specifically built for every single type of mind.</p>
-              </motion.div>
-           </motion.div>
-           
-           <div style={{ textAlign: 'center', marginTop: '10rem' }}>
-              <Link to="/features" className="btn btn-primary" style={{ padding: '1.5rem 4rem', fontSize: '1.3rem' }}>
-                 See how it works <ArrowRight size={24} style={{ marginLeft: '1rem' }} />
-              </Link>
-           </div>
+      <section className="container" style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+        <motion.div initial="hidden" whileInView="visible" variants={fadeUp} viewport={{ once: true }}>
+          <div className="mockup-card" style={{ padding: '6rem 4rem', background: 'linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))' }}>
+            <h3 style={{ fontSize: '3rem', marginBottom: '3rem', fontWeight: 600, color: '#fff', letterSpacing: '-1.5px' }}>The Core Vision</h3>
+            <p style={{ fontSize: '1.4rem', color: 'var(--text-muted)', lineHeight: '1.8', maxWidth: '850px', margin: '0 auto 4rem' }}>
+               "Most productivity software feels like a treadmill. Constant push, constant noise. We wanted to build a sanctuary—a tool that breathes with you, knows your rhythm, and steps out of the way when you're in the zone."
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', alignItems: 'center' }}>
+               <div style={{ width: '40px', height: '1px', background: 'var(--primary-light)' }} />
+               <span style={{ fontSize: '1.1rem', color: '#fff', fontWeight: 500 }}>Team Lunoo</span>
+            </div>
+          </div>
         </motion.div>
       </section>
-    </div>
+
+      {/* Enhanced Stats Section */}
+      <section style={{ padding: '4rem 2rem 12rem', background: 'rgba(255,255,255,0.01)' }}>
+         <div className="container" style={{ textAlign: 'center' }}>
+            <h2 style={{ fontSize: '3rem', marginBottom: '6rem', color: '#fff' }}>Trust in Motion.</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+                {[
+                  { label: 'Active Users', value: '50,000+', color: '#ff6d00' },
+                  { label: 'Habits Tracked', value: '12M+', color: '#9d4edd' },
+                  { label: 'Countries Served', value: '150+', color: '#10b981' },
+                  { label: 'Design Awards', value: '12', color: 'var(--primary-light)' }
+                ].map((stat, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: i * 0.1, type: 'spring', stiffness: 100 }}
+                    viewport={{ once: true }}
+                    className="glass-panel" 
+                    style={{ padding: '3.5rem', background: 'rgba(255,255,255,0.03)' }}
+                  >
+                     <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '2px' }}>{stat.label}</p>
+                     <h3 style={{ fontSize: '4rem', color: stat.color, fontWeight: 900, letterSpacing: '-2px' }}>{stat.value}</h3>
+                  </motion.div>
+                ))}
+            </div>
+         </div>
+      </section>
+    </>
   );
 }

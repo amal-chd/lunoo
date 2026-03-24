@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.lunoo.app",
+      "sha256_cert_fingerprints": [
+        "71:64:51:65:C1:76:94:6F:94:8E:D7:C8:C1:72:17:26:B3:DE:39:F1:4E:F6:AC:E0:6E:30:60:81:32:7F:87:8B"
+      ]
+    }
+  }
+]

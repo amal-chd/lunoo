@@ -1,121 +1,295 @@
-import { Clock, CheckSquare, Droplet, Flame, Compass } from 'lucide-react';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Clock, Droplet, CheckSquare, TrendingUp, Zap, PieChart, Shield, Download } from 'lucide-react';
 
 export default function Features() {
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
-  };
-
-  const itemVariant: Variants = {
-    hidden: { opacity: 0, scale: 0.95, y: 30 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } }
-  };
-
-  const containerVariant: Variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+  const fadeIn = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
   };
 
   return (
     <>
-      <div className="blob-shape blob-1"></div>
-      
-      <div style={{ paddingTop: '12rem', paddingBottom: '8rem', position: 'relative', zIndex: 10 }}>
-        <section className="container section-padding" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '0' }}>
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }} animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} transition={{ duration: 0.8 }}
-            className="hero-title gradient-text" style={{ fontSize: 'clamp(3.5rem, 6vw, 6rem)', marginBottom: '1.5rem', display: 'inline-block' }}
-          >
-            Designed for<br/>how you live.
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="hero-subtitle" style={{ color: 'var(--text-muted)' }}
-          >
-            A curated set of tools that help you organize, focus, and hydrate smoothly. Avoid bloated software, and rely on what works perfectly.
-          </motion.p>
-        </section>
-
-        <motion.section 
-          className="container bento-grid"
-          variants={containerVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          <motion.div variants={itemVariant} className="bento-item glass-panel" style={{ gridColumn: 'span 2' }}>
-            <div className="bento-icon" style={{ background: 'var(--secondary)', color: '#fff', boxShadow: '0 10px 30px rgba(255,107,139,0.4)' }}><CheckSquare size={36} /></div>
-            <h3 style={{ fontSize: '2.5rem' }}>Visual Checklists</h3>
-            <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>Break overwhelming projects into step-by-step checklists that trigger satisfying interactions.</p>
-          </motion.div>
-          
-          <motion.div variants={itemVariant} className="bento-item glass-panel" style={{ background: 'linear-gradient(135deg, var(--accent-green) 0%, #0093e9 100%)', color: '#fff', border: 'none' }}>
-            <div className="bento-icon" style={{ background: 'rgba(255,255,255,0.2)' }}><Droplet size={36} /></div>
-            <h3 style={{ color: '#fff' }}>Hydration</h3>
-            <p style={{ color: 'rgba(255,255,255,0.9)' }}>Hit your daily water goal with frictionless one-tap logging.</p>
-          </motion.div>
-
-          <motion.div variants={itemVariant} className="bento-item glass-panel" style={{ background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%)', color: '#fff', border: 'none' }}>
-            <div className="bento-icon" style={{ background: 'rgba(255,255,255,0.2)' }}><Clock size={36} /></div>
-            <h3 style={{ color: '#fff' }}>Timers</h3>
-            <p style={{ color: 'rgba(255,255,255,0.9)' }}>Track your current activity using our prominent countdown timer.</p>
-          </motion.div>
-
-          <motion.div variants={itemVariant} className="bento-item glass-panel" style={{ gridColumn: 'span 2' }}>
-            <div className="bento-icon" style={{ background: 'var(--accent)', color: '#111', boxShadow: '0 10px 30px rgba(255,204,0,0.4)' }}><Compass size={36} /></div>
-            <h3 style={{ fontSize: '2.5rem' }}>Guided Routines</h3>
-            <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>Launch an entire sequence of tasks at once. Perfect for morning warmups, deep work, or evening cool downs.</p>
-          </motion.div>
-        </motion.section>
-
-        <section className="container block-features" style={{ background: 'transparent', paddingBottom: 0, marginTop: '8rem' }}>
-          <motion.div 
-             initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-             className="feature-grid reverse"
-          >
-             <div className="feature-text">
-               <div style={{ padding: '0.6rem 1.2rem', background: 'var(--secondary)', color: '#fff', borderRadius: '99px', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontWeight: '800', textTransform: 'uppercase', marginBottom: '2rem', fontSize: '0.9rem', boxShadow: '0 8px 20px rgba(255,107,139,0.3)' }}>
-                 <Flame size={18} /> Gamified Habits
-               </div>
-               <h2>Don't break<br/>the streak.</h2>
-               <p>Build lifelong habits by tracking them systematically. Watch your daily streaks grow and get rewarded for your consistency with satisfying visual badges.</p>
-               
-               <div className="glass-panel floating-fast" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: '3rem', color: 'var(--secondary)', fontWeight: '800', fontSize: '1.2rem', padding: '1.5rem 2rem', width: 'max-content' }}>
-                 <Flame size={32} />
-                 <span>12 Days Streak! Keep going.</span>
-               </div>
-             </div>
-             
-              <div className="feature-image-box purple floating">
-                <div style={{ width: '85%', height: '85%', overflow: 'hidden', borderRadius: '40px', boxShadow: '0 40px 80px rgba(0,0,0,0.2)' }}>
-                  <img src="/screenshots/habits.png" alt="Habit Tracking at Lunoo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-              </div>
-           </motion.div>
-        </section>
-
-        <section className="container section-padding" style={{ marginTop: '5rem' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>Experience the <span className="gradient-text">Beautifully Minimal</span> UI</h2>
-          </motion.div>
-          
-          <div className="screenshot-grid">
-            <motion.div variants={itemVariant} initial="hidden" whileInView="visible" viewport={{ once: true }} className="screenshot-item large">
-              <img src="/screenshots/home.png" alt="Lunoo Dashboard" />
-            </motion.div>
-            <motion.div variants={itemVariant} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.1 }} className="screenshot-item">
-              <img src="/screenshots/finance.png" alt="Finance Tracker" />
-            </motion.div>
-            <motion.div variants={itemVariant} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.2 }} className="screenshot-item">
-              <img src="/screenshots/tasks.png" alt="Task Manager" />
-            </motion.div>
-            <motion.div variants={itemVariant} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ delay: 0.3 }} className="screenshot-item large">
-              <img src="/screenshots/habits.png" alt="Habit Progress" />
-            </motion.div>
+      <section className="hero-wrapper" style={{ paddingBottom: '3rem' }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="hero-pill-badge">
+            <span style={{ color: "var(--text-light)" }}>✦</span> Feature Ecosystem
           </div>
-        </section>
-      </div>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}
+          className="hero-title"
+        >
+          An Integrated Dashboard<br/>for your Life.
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          Lunoo isn't just an app — it's your dashboard for total self-mastery.<br/>
+          From financial freedom to daily hydration, we've unified it all.
+        </motion.p>
+      </section>
+
+      {/* Bento Grid Concept for Features */}
+      <section className="mockup-grid" style={{ marginBottom: '8rem', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', padding: '0 2rem' }}>
+         
+         {/* Financial Suite - Green Accent */}
+         <motion.div {...fadeIn} className="mockup-card mockup-card-orange">
+            <div className="card-header">
+               <h3>Unified Financial Suite</h3>
+               <div className="icon-button" style={{ color: '#10b981', background: 'rgba(16, 185, 129, 0.1)', borderColor: 'rgba(16, 185, 129, 0.2)' }}><PieChart size={18} /></div>
+            </div>
+
+            <div className="appointment-card" style={{ paddingBottom: '2.5rem' }}>
+               <div className="profile-row" style={{ marginBottom: '0.8rem' }}>
+                  <div style={{ background: 'rgba(16, 185, 129, 0.1)', borderRadius: '12px', padding: '10px' }}>
+                     <TrendingUp color="#10b981" size={24} />
+                  </div>
+                  <div className="profile-info">
+                     <h4>Budget Architecture</h4>
+                     <p>Income vs Expense Clarity.</p>
+                  </div>
+               </div>
+               
+               <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                 Automatic projections based on spending. Export everything to CSV and take control of your capital.
+               </p>
+               
+               <div className="action-buttons">
+                  <button className="btn-card"><Download size={12} /> Export CSV</button>
+                  <button className="btn-card btn-primary-orange" style={{ background: '#10b981' }}>View Stats</button>
+               </div>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '3rem', opacity: 0.6 }}>
+               <span style={{ background: 'rgba(255,255,255,0.05)', padding: '0.5rem 1.5rem', borderRadius: '40px', fontSize: '0.85rem', border: '1px solid rgba(255,255,255,0.1)' }}>Financial Freedom</span>
+            </div>
+         </motion.div>
+
+         {/* Wellness Ecosystem - Purple Accent */}
+         <motion.div {...fadeIn} transition={{ delay: 0.1, duration: 0.6 }} className="mockup-card mockup-card-purple">
+            <div className="card-header" style={{ marginBottom: '2.5rem' }}>
+               <h3>Wellness Ecosystem</h3>
+               <div className="icon-button"><Droplet size={18} /></div>
+            </div>
+
+            <div className="session-card">
+               <div className="session-info">
+                  <div style={{ background: 'rgba(155, 44, 255, 0.2)', padding: '10px', borderRadius: '50%' }}>
+                     <Droplet color="#c77dff" size={20} />
+                  </div>
+                  <div>
+                     <p>Hydration Monitoring</p>
+                     <p>Intake visualization</p>
+                  </div>
+               </div>
+               <div className="live-indicator">
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '0.7rem', color: '#c77dff', fontWeight: 600 }}>Active flow</div>
+                    <div>Started 25 min ago</div>
+                  </div>
+               </div>
+            </div>
+
+            <div className="data-log-card">
+               <div className="data-log-glow">
+                  <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                     <div style={{ background: 'rgba(255,255,255,0.2)', width: '30px', height: '30px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Zap size={16} fill="#fff" />
+                     </div>
+                     <div>
+                        <h5>Mood Check-In</h5>
+                        <p>Track your daily state</p>
+                     </div>
+                  </div>
+                  <span className="data-time">Active</span>
+               </div>
+            </div>
+         </motion.div>
+
+         {/* Smart Habits - Purple Glow (Fire) */}
+         <motion.div {...fadeIn} transition={{ delay: 0.2, duration: 0.6 }} className="mockup-card mockup-card-purple">
+            <div className="card-header">
+               <h3>Habit Architecture</h3>
+               <div className="icon-button" style={{ background: 'rgba(255, 109, 0, 0.1)', color: '#ff6d00', border: '1px solid rgba(255, 109, 0, 0.3)' }}>
+                  <Zap size={18} />
+               </div>
+            </div>
+
+            <div className="appointment-card" style={{ borderColor: 'rgba(155, 44, 255, 0.3)' }}>
+               <div className="profile-row">
+                  <div style={{ width: '50px', height: '50px', background: 'var(--bg-page)', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid rgba(155, 44, 255, 0.5)' }}>
+                     <span style={{ fontSize: '1.5rem' }}>🔥</span>
+                  </div>
+                  <div className="profile-info">
+                     <h4>Consistency Mastery</h4>
+                     <p>Visual Streaks & Heatmaps</p>
+                  </div>
+               </div>
+               <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                  Leverage visual feedback to stay on track. Small steps lead to massive transformation.
+               </p>
+            </div>
+            
+            <div className="step-card" style={{ marginBottom: '1rem' }}>
+               <div className="step-status" style={{ background: 'rgba(155, 44, 255, 0.1)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff' }}>
+                     <CheckSquare size={14} color="#9d4edd" /> Reading Time
+                  </div>
+                  <span style={{ color: 'var(--text-muted)' }}>12 Day Streak</span>
+               </div>
+            </div>
+         </motion.div>
+
+         {/* Deep Work Focus - Dark/Glass */}
+         <motion.div {...fadeIn} transition={{ delay: 0.3, duration: 0.6 }} className="mockup-card mockup-card-orange">
+            <div className="card-header">
+               <h3>Deep Work & Flow</h3>
+               <div className="icon-button"><Clock size={18} /></div>
+            </div>
+
+            <div className="session-card" style={{ borderColor: 'rgba(255, 255, 255, 0.1)', background: 'rgba(255, 255, 255, 0.02)' }}>
+               <div className="session-info">
+                  <div style={{ background: 'rgba(255, 255, 255, 0.05)', padding: '10px', borderRadius: '50%' }}>
+                     <Shield color="#ff6d00" size={20} />
+                  </div>
+                  <div>
+                     <p>Distraction Shield</p>
+                     <p>Integrated Flow Timer</p>
+                  </div>
+               </div>
+               <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  25:00
+               </div>
+            </div>
+
+            <div className="data-log-card" style={{ border: 'none', background: 'transparent', padding: '0' }}>
+               <div className="data-log-glow" style={{ background: 'linear-gradient(90deg, #ff6d00, #ff9900)', boxShadow: '0 10px 30px rgba(255, 109, 0, 0.4)' }}>
+                  <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                     <h5 style={{ margin: '0', fontSize: '1rem', fontWeight: 700 }}>START FOCUS SESSION</h5>
+                  </div>
+               </div>
+            </div>
+         </motion.div>
+
+      </section>
+
+      {/* NEW: AI Mastery Section */}
+      <section className="container" style={{ marginBottom: '10rem' }}>
+         <div className="glass-panel" style={{ padding: '6rem 4rem', textAlign: 'center', background: 'radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent)' }}>
+            <motion.div {...fadeIn}>
+               <div className="icon-button" style={{ margin: '0 auto 2rem', width: '60px', height: '60px', background: 'rgba(139, 92, 246, 0.1)' }}>
+                  <Zap size={30} color="var(--primary-light)" />
+               </div>
+               <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>Persona-Driven Insights</h2>
+               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
+                  Lunoo analyzes your behavioral patterns to provide localized, context-aware suggestions. Whether you're an ADHD mind or a serial entrepreneur, the dashboard adapts to you.
+               </p>
+               
+               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                  <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'left', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
+                     <h4 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Local AI Processing</h4>
+                     <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Insights are generated on-device, ensuring your personal data never touches our servers.</p>
+                  </div>
+                  <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'left', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                     <h4 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Smart Burnout Detection</h4>
+                     <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Identifies when your productivity metrics dip and suggests proactive breaks.</p>
+                  </div>
+                  <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'left', border: '1px solid rgba(255, 109, 0, 0.2)' }}>
+                     <h4 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Custom Focus Blocks</h4>
+                     <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Learns your "Flow State" peaks and helps you schedule tasks accordingly.</p>
+                  </div>
+               </div>
+            </motion.div>
+         </div>
+      </section>
+
+      {/* NEW: Global Sync Section */}
+      <section className="container" style={{ marginBottom: '10rem' }}>
+         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
+            <motion.div {...fadeIn}>
+               <div className="hero-pill-badge" style={{ marginBottom: '2rem' }}>✦ Multi-Platform</div>
+               <h2 style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>Synchronized Sanctum.</h2>
+               <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
+                  Start a habit on your iPhone, check your budget on your Android tablet, and view your focus stats on the web. Lunoo's hybrid backend ensures sub-second latency across all your nodes.
+               </p>
+               <ul style={{ listStyle: 'none', padding: 0, marginTop: '2.5rem' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', color: '#fff' }}>
+                     <CheckSquare size={18} color="#10b981" /> Real-time Supabase Sync
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', color: '#fff' }}>
+                     <CheckSquare size={18} color="#10b981" /> Offline-first Architecture
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: '#fff' }}>
+                     <CheckSquare size={18} color="#10b981" /> Zero-Knowledge Encryption
+                  </li>
+               </ul>
+            </motion.div>
+            
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} style={{ position: 'relative' }}>
+               <div className="glass-panel" style={{ padding: '3rem', borderRadius: '40px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ background: '#000', borderRadius: '25px', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
+                     <div style={{ height: '300px', width: '100%', background: 'linear-gradient(135deg, rgba(155, 44, 255, 0.1), rgba(255, 109, 0, 0.1))', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                         <div style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📱 💻 ⌚</div>
+                            <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>SYCHRONIZING...</div>
+                         </div>
+                     </div>
+                  </div>
+               </div>
+               
+               {/* Decorative Circles */}
+               <div className="glow-purple" style={{ top: '-40px', right: '-40px', width: '200px', height: '200px', zIndex: -1 }} />
+            </motion.div>
+         </div>
+      </section>
+
+      {/* NEW: Enterprise Security Section */}
+      <section className="container" style={{ marginBottom: '10rem' }}>
+         <div className="glass-panel" style={{ padding: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+            <div>
+               <Shield size={40} color="#10b981" style={{ marginBottom: '1.5rem' }} />
+               <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '1rem' }}>Your Fortress.</h3>
+               <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>We utilize industry-leading protocols to ensure your data remains your property. No backdoors, no selling to third parties.</p>
+            </div>
+            
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                   <div style={{ background: 'rgba(16, 185, 129, 0.1)', height: 'fit-content', padding: '10px', borderRadius: '12px' }}>
+                      <TrendingUp size={16} color="#10b981" />
+                   </div>
+                   <div>
+                      <h5 style={{ color: '#fff', margin: '0 0 0.4rem 0' }}>RSA-4096 Encryption</h5>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>The same level of security used by global financial institutions.</p>
+                   </div>
+                </div>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                   <div style={{ background: 'rgba(139, 92, 246, 0.1)', height: 'fit-content', padding: '10px', borderRadius: '12px' }}>
+                      <PieChart size={16} color="var(--primary-light)" />
+                   </div>
+                   <div>
+                      <h5 style={{ color: '#fff', margin: '0 0 0.4rem 0' }}>Biometric Gateway</h5>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', margin: 0 }}>FaceID and Fingerprint integration for sensitive financial logs.</p>
+                   </div>
+                </div>
+            </div>
+         </div>
+      </section>
+
+      {/* Trust/Tech Section */}
+      <section style={{ background: 'rgba(255,255,255,0.02)', padding: '6rem 0', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '1.5rem', marginBottom: '3rem', color: 'var(--text-muted)', fontWeight: 500 }}>POWERING THE FUTURE OF PRODUCTIVITY</h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem', opacity: 0.4 }}>
+              <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>FLUTTER</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>POSTGRESQL</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>SUPABASE</span>
+              <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>FIREBASE</span>
+          </div>
+      </section>
     </>
   );
 }

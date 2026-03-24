@@ -12,6 +12,9 @@ import BlogPost from './pages/BlogPost';
 import LandingPage from './pages/LandingPage';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import Pricing from './pages/Pricing';
+import FAQ from './pages/FAQ';
+import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import CookieConsent from './components/CookieConsent';
 import './App.css';
@@ -28,9 +31,12 @@ function AnimatedRoutes() {
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
         <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
+        <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/persona/:slug" element={<PageWrapper><LandingPage /></PageWrapper>} />
         <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />
-        <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
+          <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
+          <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
+          <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
@@ -54,6 +60,12 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className="app">
+        <div className="aurora-bg">
+          <div className="glow-purple" />
+          <div className="glow-orange" style={{ top: '60%', left: '70%' }} />
+          <div className="ring-orange" />
+          <div className="ring-purple" />
+        </div>
         <Navbar />
         <main className="main-content">
           <AnimatedRoutes />

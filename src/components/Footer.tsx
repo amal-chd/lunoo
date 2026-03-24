@@ -1,69 +1,94 @@
 import { Link } from 'react-router-dom';
-import { Heart, Instagram, Twitter, MessageSquare } from 'lucide-react';
+import { Heart, Instagram, Twitter, MessageSquare, Mail, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AppStoreBadge, PlayStoreBadge } from './Badges';
 
 export default function Footer() {
   return (
-    <footer className="footer" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+    <footer className="footer shadow-2xl">
       <div className="container">
-        <div className="footer-top">
-          <div style={{ maxWidth: '600px' }}>
-            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              Ready to reclaim your <br/> working memory?
-            </motion.h2>
-            <div style={{ display: 'flex', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
-               <a href="#"><AppStoreBadge style={{ height: '44px' }} /></a>
-               <a href="#"><PlayStoreBadge style={{ height: '44px' }} /></a>
-            </div>
+        
+        {/* Simplified Premium CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass-panel"
+          style={{ 
+            padding: '3rem',
+            textAlign: 'center',
+            marginBottom: '4rem',
+            background: 'rgba(255, 255, 255, 0.02)',
+            border: '1px solid rgba(255, 255, 255, 0.05)'
+          }}
+        >
+          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+            Reclaim your <span className="gradient-text">focus.</span>
+          </h2>
+          <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '500px', margin: '0 auto 2rem' }}>
+             Join the sanctuary. Optimize your habits and finances with Lunoo.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+             <a href="#" className="badge-link"><AppStoreBadge style={{ height: '40px' }} /></a>
+             <a href="https://play.google.com/store/apps/details?id=com.lunoo.app" target="_blank" rel="noopener noreferrer" className="badge-link"><PlayStoreBadge style={{ height: '40px' }} /></a>
           </div>
-          
-          <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '1rem', color: 'rgba(255,255,255,0.6)' }}>
-             <p style={{ fontSize: '1.2rem' }}>Questions? Talk to us.</p>
-             <a href="mailto:hello@lunoo.app" style={{ fontSize: '2rem', fontWeight: 900, color: '#fff' }}>hello@lunoo.app</a>
-          </div>
-        </div>
+        </motion.div>
 
         <div className="footer-grid">
+          
           <div className="footer-col">
-            <h4 style={{ color: '#fff', fontSize: '1.5rem', fontWeight: 800 }}>Lunoo</h4>
-            <p style={{ color: 'rgba(255,255,255,0.4)', marginTop: '1.5rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              Built for every type of mind. <br/> Simple, visual, and neuro-inclusive.
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '1.4rem', fontWeight: 800, color: '#fff', marginBottom: '1.5rem' }}>
+               <img src="/logo.png" alt="Lunoo" style={{ height: '28px' }} />
+               Lunoo
+            </Link>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+              Master your mind and your money in one beautiful experience.
             </p>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+               <a href="#" className="badge-link"><Instagram size={18} /></a>
+               <a href="#" className="badge-link"><Twitter size={18} /></a>
+               <a href="#" className="badge-link"><MessageSquare size={18} /></a>
+            </div>
           </div>
+
           <div className="footer-col">
             <h4>Product</h4>
             <Link to="/features">Features</Link>
+            <Link to="/pricing">Pricing</Link>
             <Link to="/philosophy">Philosophy</Link>
-            <Link to="/blog">Blog</Link>
-            <Link to="/">Live Support</Link>
-            <Link to="/about">Community</Link>
+            <Link to="/blog">Journal</Link>
           </div>
+
           <div className="footer-col">
-            <h4>Solutions</h4>
-            <Link to="/persona/habit-tracker-for-students">For Students</Link>
-            <Link to="/persona/habit-tracker-for-entrepreneurs">For Entrepreneurs</Link>
-            <Link to="/persona/daily-planner-for-professionals">For Professionals</Link>
-            <Link to="/persona/productivity-app-for-creators">For Creators</Link>
+            <h4>Company</h4>
+            <Link to="/about">Our Story</Link>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
+            <a href="mailto:hello@lunoo.app">Contact</a>
           </div>
-          <div className="footer-col" style={{ textAlign: 'right' }}>
-            <h4>Legal</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', alignItems: 'flex-end', marginBottom: '2rem' }}>
-              <Link to="/privacy">Privacy Policy</Link>
-              <Link to="/terms">Terms of Service</Link>
-            </div>
-            <h4>Social</h4>
-            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'flex-end' }}>
-               <a href="#"><Instagram size={28} /></a>
-               <a href="#"><Twitter size={28} /></a>
-               <a href="#"><MessageSquare size={28} /></a>
-            </div>
+
+          <div className="footer-col">
+             <h4>Newsletter</h4>
+             <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+               Stay updated with our neuro-inclusive growth tips.
+             </p>
+             <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <input 
+                  type="email" 
+                  placeholder="Email address" 
+                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', padding: '0.6rem 1rem', borderRadius: '12px', color: '#fff', fontSize: '0.85rem', width: '100%' }}
+                />
+             </div>
           </div>
+
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Lunoo App Ltd. Made with <Heart size={14} fill="currentColor" color="var(--secondary)" /> for the community.</p>
-          <p>Hand-crafted for humans.</p>
+          <p>© 2026 Lunoo App. Built for humans.</p>
+          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+             <Heart size={14} color="var(--primary-light)" />
+             <span>Systems Online</span>
+          </div>
         </div>
       </div>
     </footer>

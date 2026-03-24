@@ -1,81 +1,222 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 
 export const blogPosts = [
   {
     id: 1,
-    slug: 'how-to-build-daily-habits-that-stick',
-    title: 'How to Build Daily Habits That Stick (2026 Guide)',
-    excerpt: 'Consistency is the secret to change. Learn the science behind habit formation and why tracking is your best ally.',
-    date: 'March 15, 2026',
-    author: 'Sarah James',
-    category: 'Productivity',
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=800&q=80'
+    title: "The Architecture of Consistency: Why Visual Rituals Work",
+    excerpt: "Discover the psychological power of visual habit tracking and how Lunoo transforms your daily routines into a digital sanctum of productivity.",
+    category: "Productivity",
+    date: "March 20, 2024",
+    readTime: "6 min",
+    author: "Elena Vance",
+    image: "/images/journal/featured.png",
+    slug: "architecture-of-consistency"
   },
   {
     id: 2,
-    slug: 'best-habit-tracker-apps-for-productivity',
-    title: 'Best Habit Tracker Apps for Productivity in 2026',
-    excerpt: 'Not all apps are created equal. We compare the top contenders and why a visual approach wins every time.',
-    date: 'March 10, 2026',
-    author: 'Mike Chen',
-    category: 'Guides',
-    image: 'https://images.unsplash.com/photo-1512314881392-0b25e1975e53?auto=format&fit=crop&w=800&q=80'
+    title: "Financial Flow: Navigating Modern Wealth Management",
+    excerpt: "Learn how to architect your financial future with precision-driven tracking and intelligent automation tools designed for the modern era.",
+    category: "Finance",
+    date: "March 18, 2024",
+    readTime: "8 min",
+    author: "Marcus Aurelius",
+    image: "/images/journal/finance.png",
+    slug: "financial-flow-management"
   },
   {
     id: 3,
-    slug: 'how-to-stay-consistent-with-daily-routine',
-    title: 'How to Stay Consistent with Your Daily Routine',
-    excerpt: 'Life happens. Here is how to maintain your routine even when your schedule gets chaotic and unpredictable.',
-    date: 'March 5, 2026',
-    author: 'Elena Ross',
-    category: 'Mental Health',
-    image: 'https://images.unsplash.com/photo-1493839523149-2864fca44919?auto=format&fit=crop&w=800&q=80'
+    title: "Mindful Metrics: The Intersection of Data and Wellbeing",
+    excerpt: "Exploring the balance between digital optimization and mental clarity. How to use data to enhance your wellness without the burnout.",
+    category: "Wellness",
+    date: "March 15, 2024",
+    readTime: "5 min",
+    author: "Sarah Chen",
+    image: "/images/journal/wellness.png",
+    slug: "mindful-metrics-wellbeing"
+  },
+  {
+    id: 4,
+    title: "Digital Networking in the Era of Deep Work",
+    excerpt: "How to maintain high-value professional connections while preserving your focus and cognitive bandwidth in a noisy world.",
+    category: "Productivity",
+    date: "March 12, 2024",
+    readTime: "7 min",
+    author: "David Goggins",
+    image: "/images/journal/social.png",
+    slug: "digital-networking-deep-work"
   }
 ];
 
 export default function Blog() {
-  return (
-    <div className="page-pt">
-       <section className="container section-padding">
-          <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-             <h1 style={{ fontSize: '4rem', marginBottom: '2rem' }}>The <span className="gradient-text">Lunoo Blog</span></h1>
-             <p style={{ fontSize: '1.4rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto' }}>Insights and strategies to help you hack your brain and reclaim your focus.</p>
-          </div>
+  const [activeCategory, setActiveCategory] = useState('All');
+  const categories = ['All', 'Productivity', 'Finance', 'Wellness'];
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '3rem' }}>
-             {blogPosts.map((post) => (
-                <motion.div 
-                  key={post.id} 
-                  className="glass-panel" 
-                  whileHover={{ y: -10 }}
-                  style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}
-                >
-                   <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
-                      <img src={post.image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', padding: '0.5rem 1rem', background: 'var(--primary)', color: '#fff', borderRadius: '99px', fontWeight: 700, fontSize: '0.9rem' }}>
+  const filteredPosts = blogPosts.filter(post => 
+    activeCategory === 'All' || post.category === activeCategory
+  );
+
+  return (
+    <div className="blog-page" style={{ paddingBottom: '10rem', minHeight: '100vh', position: 'relative', background: 'transparent' }}>
+      {/* Hero Section */}
+      <section className="container" style={{ paddingTop: '10rem', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="pill-badge" style={{ marginBottom: '1.5rem', display: 'inline-block' }}>Insights & Guides</span>
+          <h1 className="hero-title" style={{ fontSize: 'clamp(3.5rem, 9vw, 6.5rem)', marginBottom: '1.5rem', lineHeight: 1, fontWeight: 800 }}>
+            The <span className="gradient-text">Journal</span>
+          </h1>
+          <p className="hero-subtitle" style={{ maxWidth: '750px', margin: '0 auto 5rem', fontSize: '1.4rem', opacity: 0.8 }}>
+            Deep explorations in habit architecture, financial mastery, and the science of focus.
+          </p>
+        </motion.div>
+
+        {/* Category Filters - High Gloss Segmented Control */}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          gap: '0.8rem', 
+          padding: '0.8rem',
+          background: 'rgba(255,109,0,0.08)',
+          borderRadius: '100px',
+          maxWidth: 'fit-content',
+          margin: '0 auto 6rem',
+          border: '2px solid rgba(255,109,0,0.3)',
+          backdropFilter: 'blur(30px)',
+          flexWrap: 'wrap',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.4)'
+        }}>
+          {categories.map(category => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              style={{
+                padding: '1.2rem 3rem',
+                borderRadius: '100px',
+                border: 'none',
+                background: activeCategory === category ? 'var(--secondary)' : 'rgba(255,255,255,0.03)',
+                color: '#fff',
+                fontSize: '1.1rem',
+                fontWeight: 800,
+                cursor: 'pointer',
+                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                position: 'relative',
+                boxShadow: activeCategory === category ? '0 10px 30px rgba(255, 109, 0, 0.5)' : 'none',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+            >
+              <span style={{ position: 'relative', zIndex: 2 }}>{category}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Blog Grid */}
+      <section className="container" style={{ position: 'relative', zIndex: 5 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '4rem' }}>
+          <AnimatePresence mode="popLayout">
+            {filteredPosts.map((post) => (
+              <motion.div
+                key={post.id}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Link to={`/blog/${post.slug}`} className="glass-panel" style={{ 
+                  padding: '0', 
+                  overflow: 'hidden', 
+                  height: '100%', 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  background: 'rgba(255,255,255,0.02)',
+                  textDecoration: 'none',
+                  boxShadow: '0 40px 80px rgba(0,0,0,0.3)'
+                }}>
+                  <div style={{ height: '320px', overflow: 'hidden', position: 'relative' }}>
+                    <img src={post.image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <div style={{ 
+                      position: 'absolute', 
+                      top: '1.5rem', 
+                      right: '1.5rem'
+                    }}>
+                      <span style={{ 
+                        background: 'rgba(255,109,0,0.9)', 
+                        color: '#fff', 
+                        padding: '0.6rem 1.2rem', 
+                        borderRadius: '8px', 
+                        fontSize: '0.8rem', 
+                        fontWeight: 900, 
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        backdropFilter: 'blur(5px)'
+                      }}>
                         {post.category}
-                      </div>
-                   </div>
-                   
-                   <div style={{ padding: '2.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ display: 'flex', gap: '1.5rem', color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><Calendar size={16} /> {post.date}</span>
-                         <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><User size={16} /> {post.author}</span>
-                      </div>
-                      
-                      <h3 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', lineHeight: '1.4' }}>{post.title}</h3>
-                      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', flex: 1 }}>{post.excerpt}</p>
-                      
-                      <Link to={`/blog/${post.slug}`} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: 700, color: 'var(--primary)', fontSize: '1.1rem' }}>
-                         Read Article <ArrowRight size={20} />
-                      </Link>
-                   </div>
-                </motion.div>
-             ))}
+                      </span>
+                    </div>
+                  </div>
+                  <div style={{ padding: '3.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem', marginBottom: '1.8rem' }}>
+                      <Clock size={18} /> <span>{post.readTime} read</span>
+                      <span style={{ margin: '0 0.5rem' }}>•</span>
+                      <span>{post.date}</span>
+                    </div>
+                    <h3 style={{ fontSize: '2.2rem', color: '#fff', marginBottom: '1.5rem', lineHeight: '1.2', fontFamily: 'Outfit', fontWeight: 700 }}>{post.title}</h3>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '3rem', flex: 1 }}>{post.excerpt}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 800, fontSize: '1.1rem', marginTop: 'auto' }}>
+                      Read Journey <ArrowRight size={24} />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+      </section>
+
+      {/* Newsletter - Epic Design */}
+      <section className="container" style={{ marginTop: '15rem' }}>
+        <div className="glass-panel" style={{ 
+          padding: '10rem 4rem', 
+          textAlign: 'center', 
+          border: '2px solid rgba(255,109,0,0.4)', 
+          borderRadius: '60px',
+          background: 'radial-gradient(circle at center, rgba(255,109,0,0.1) 0%, transparent 70%), rgba(255,255,255,0.01)'
+        }}>
+          <h2 style={{ fontSize: '4.5rem', marginBottom: '2rem', color: '#fff', fontFamily: 'Outfit', fontWeight: 800 }}>Master Your <span className="gradient-text">Focus</span></h2>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.4rem', marginBottom: '5rem', maxWidth: '700px', margin: '0 auto 5rem' }}>
+            Exclusive weekly guides on digital minimalism, wealth architecture, and high-performance habits.
+          </p>
+          <div style={{ display: 'flex', gap: '1.5rem', maxWidth: '650px', margin: '0 auto', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <input 
+              type="email" 
+              placeholder="architect@domain.com" 
+              style={{
+                flex: 1,
+                minWidth: '320px',
+                padding: '1.6rem 3rem',
+                borderRadius: '100px',
+                border: '2px solid rgba(255,255,255,0.15)',
+                background: 'rgba(255,255,255,0.05)',
+                color: '#fff',
+                fontSize: '1.2rem',
+                outline: 'none',
+                backdropFilter: 'blur(20px)',
+                transition: 'border-color 0.3s ease'
+              }}
+            />
+            <button className="glow-pill" style={{ padding: '1.6rem 4.5rem', fontSize: '1.2rem' }}>Access Sanctum</button>
           </div>
-       </section>
+        </div>
+      </section>
     </div>
   );
 }

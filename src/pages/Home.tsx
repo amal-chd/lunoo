@@ -1,198 +1,244 @@
-import { motion, type Variants } from 'framer-motion';
-import { Star, CheckSquare, Target, Wallet } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { TrendingUp, Droplet, Flame, CheckCircle2 } from 'lucide-react';
 import { AppStoreBadge, PlayStoreBadge } from '../components/Badges';
-import FAQ from '../components/FAQ';
 
 export default function Home() {
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
-  const scaleUp: Variants = {
-    hidden: { opacity: 0, scale: 0.9, y: 50 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.7, delay: 0.3 } }
-  };
-
   return (
     <>
-      <div className="blob-shape blob-1"></div>
-      <div className="blob-shape blob-2"></div>
-      <div className="blob-shape blob-3"></div>
-
       <section className="hero-wrapper">
-        <div className="container">
-          <div className="hero-content">
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-               <div className="hero-pill">
-                 <span className="hero-pill-badge">Primary Features</span>
-                 Habit Tracker • Daily Planner • Expense Manager
-               </div>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}
-              className="hero-title"
-            >
-              All-in-One <span className="gradient-text">Habit Tracker & Productivity App.</span>
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
-              className="hero-subtitle"
-            >
-              Master your daily routine with the ultimate task manager and habit tracker app. Build streaks, manage money, and stay consistent.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}
-              className="hero-actions"
-            >
-             <div style={{ display: 'flex', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
-               <a href="#"><AppStoreBadge style={{ height: '44px' }} /></a>
-               <a href="#"><PlayStoreBadge style={{ height: '44px' }} /></a>
-            </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} style={{ marginTop: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', color: 'var(--text-muted)', fontSize: '1.1rem', fontWeight: 600 }}>
-               <div style={{ display: 'flex', color: 'var(--accent)' }}>
-                 {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
-               </div>
-               <span>Trusted by 10,000+ habit building superstars.</span>
-            </motion.div>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="hero-pill-badge">
+            <span style={{ color: "var(--text-light)" }}>✦</span> Your Digital Sanctum
           </div>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}
+          className="hero-title"
+        >
+          Master Your Habits.<br/>Own Your Finances.
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          Lunoo is the ultimate personal optimization platform. Track habits, manage budgets,<br/>and monitor holistic wellness in one beautiful, distraction-free experience.
+        </motion.p>
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
+          <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#" className="badge-link">
+              <AppStoreBadge style={{ height: '48px' }} />
+            </a>
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="badge-link"
+            >
+              <PlayStoreBadge style={{ height: '48px' }} />
+            </a>
+          </div>
+        </motion.div>
 
-          <motion.div variants={scaleUp} initial="hidden" animate="visible" className="hero-mockup-container">
-            <motion.div className="floating-widget widget-1 floating" initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1, duration: 0.8 }}>
-              <div style={{ width: '45px', height: '45px', background: 'var(--primary-light)', borderRadius: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff' }}>
-                 <Target size={24} />
-               </div>
-              <div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Daily Habit</div>
-                <div style={{ fontSize: '1.1rem' }}>Streak: 15 Days! 🔥</div>
-              </div>
-            </motion.div>
-
-            <motion.div className="floating-widget widget-2 floating-fast" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.2, duration: 0.8 }}>
-              <div style={{ width: '45px', height: '45px', background: 'var(--secondary)', borderRadius: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff' }}>
-                 <Wallet size={24} />
-               </div>
-              <div>
-                <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Expense Tracking</div>
-                <div style={{ fontSize: '1.1rem' }}>Saved $40 today 💰</div>
-              </div>
-            </motion.div>
-
-            <div className="mockup-frame">
-              <div className="mockup-notch"></div>
-              <div className="mockup-ui">
-                <img src="/screenshots/home.png" alt="Lunoo Dashboard" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '40px' }} />
-              </div>
-            </div>
-          </motion.div>
+        <div className="hero-partners">
+          <p>BUILT FOR HIGH PERFORMERS</p>
+          <div className="partner-logos">
+             <span>HABITS</span> • <span>FINANCE</span> • <span>WELLNESS</span> • <span>FOCUS</span>
+          </div>
         </div>
       </section>
 
-      {/* Main SEO Sections */}
-      <section className="container section-padding">
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="feature-grid">
-           <div className="feature-text">
-             <h2>Build Better<br/>Habits Daily</h2>
-             <p>Our daily habit tracker helps you maintain consistency through visual progress and streaks. Research shows that tracking habits is the #1 way to ensure long-term behavior change.</p>
-             <Link to="/features" className="btn btn-secondary glass-panel" style={{ marginTop: '2rem' }}>Experience the transformation</Link>
-           </div>
-           <div className="feature-image-box blue floating">
-              <div className="glass-panel" style={{ padding: '3rem' }}>
-                <Target size={80} color="var(--primary)" fill="rgba(92,111,255,0.1)" />
-                <h3 style={{ marginTop: '2rem' }}>Routine Tracker</h3>
-              </div>
-           </div>
-         </motion.div>
-
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="feature-grid reverse" style={{ marginTop: '10rem' }}>
-           <div className="feature-text">
-             <h2>Organize Tasks &<br/>Stay Productive</h2>
-             <p>As a robust task manager app, Lunoo integrates your daily planner and habit tracker into one seamless workflow. Never miss a deadline or a workout again.</p>
-             <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-               <a href="#"><AppStoreBadge style={{ height: '56px' }} /></a>
-               <a href="#"><PlayStoreBadge style={{ height: '56px' }} /></a>
+      {/* Mockup Cards Section */}
+      <section className="mockup-grid">
+         
+         {/* Finance Command Center - Green/Emerald Theme */}
+         <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="mockup-card mockup-card-orange">
+            <div className="card-header">
+               <h3>Finance Command Center</h3>
+               <div className="icon-button" style={{ background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', borderColor: 'rgba(16, 185, 129, 0.2)' }}><TrendingUp size={18} /></div>
             </div>
-           </div>
-           <div className="feature-image-box purple floating">
-              <div className="glass-panel" style={{ padding: '3rem' }}>
-                <CheckSquare size={80} color="var(--secondary)" />
-                <h3 style={{ marginTop: '2rem' }}>Task Management</h3>
-              </div>
-           </div>
-         </motion.div>
 
-         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="feature-grid" style={{ marginTop: '10rem' }}>
-           <div className="feature-text">
-             <h2>Track Expenses &<br/>Manage Money</h2>
-             <p>Why use multiple apps? Lunoo includes an integrated financial tracker so you can monitor your habits and your spending side-by-side. The ultimate all-in-one productivity app.</p>
-             <Link to="/features" className="btn btn-secondary glass-panel" style={{ marginTop: '2rem' }}>Master your finances</Link>
-           </div>
-           <div className="feature-image-box green floating">
-              <div className="glass-panel" style={{ padding: '3rem' }}>
-                <Wallet size={80} color="var(--accent-green)" />
-                <h3 style={{ marginTop: '2rem' }}>Expense Manager</h3>
-              </div>
-              <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#"><AppStoreBadge style={{ height: '60px' }} /></a>
-            <a href="#"><PlayStoreBadge style={{ height: '60px' }} /></a>
-         </div>
-           </div>
-         </motion.div>
-      </section>
+            <div className="appointment-card" style={{ borderColor: 'rgba(16, 185, 129, 0.2)' }}>
+               <div className="profile-row">
+                  <div style={{ background: 'rgba(16, 185, 129, 0.1)', borderRadius: '12px', padding: '10px' }}>
+                     <span style={{ fontSize: '1.2rem' }}>💰</span>
+                  </div>
+                  <div className="profile-info">
+                     <h4>Monthly Balance</h4>
+                     <p>+ ₹24,500 <span style={{ color: '#10b981', fontSize: '0.7rem', fontWeight: 700 }}>SAVINGS</span></p>
+                  </div>
+               </div>
+            </div>
 
-      {/* SCREENSHOT SLIDER SECTION */}
-      <section className="screenshot-slider-section">
-        <div className="container">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <h2 style={{ fontSize: '3.5rem', marginBottom: '1.5rem' }}>Designed for <span className="gradient-text">Clarity & Ease.</span></h2>
-            <p className="hero-subtitle" style={{ maxWidth: '700px', margin: '0 auto' }}>A beautiful, intuitive interface that makes building habits and managing life a joy.</p>
-          </motion.div>
-          
-          <div className="screenshot-track">
-            <div className="screenshot-container">
-              {[
-                { src: '/screenshots/home.png', title: 'Home Dashboard' },
-                { src: '/screenshots/habits.png', title: 'Habit Tracker' },
-                { src: '/screenshots/finance.png', title: 'Finance Tracker' },
-                { src: '/screenshots/tasks.png', title: 'Task Manager' },
-                { src: '/screenshots/profile.png', title: 'Profile Settings' },
-                // Duplicate for infinite scroll effect
-                { src: '/screenshots/home.png', title: 'Home Dashboard' },
-                { src: '/screenshots/habits.png', title: 'Habit Tracker' },
-                { src: '/screenshots/finance.png', title: 'Finance Tracker' },
-                { src: '/screenshots/tasks.png', title: 'Task Manager' },
-                { src: '/screenshots/profile.png', title: 'Profile Settings' },
-              ].map((item, index) => (
-                <div key={index} className="screenshot-card glass-panel">
-                  <img src={item.src} alt={item.title} />
-                  <div className="screenshot-caption">{item.title}</div>
+            <div className="data-log-card" style={{ borderColor: 'rgba(16, 185, 129, 0.1)' }}>
+               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
+                  <span>Rent & Utilities</span>
+                  <span>₹12,000 / ₹15,000</span>
+               </div>
+               <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
+                  <div style={{ width: '80%', height: '100%', background: '#10b981', boxShadow: '0 0 10px rgba(16, 185, 129, 0.5)' }}></div>
+               </div>
+            </div>
+
+            <div className="step-card" style={{ marginTop: '20px' }}>
+                <div className="step-status">
+                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fff' }}>
+                      <span style={{ color: '#10b981' }}><CheckCircle2 size={14} /></span> Grocery Shopping
+                   </div>
+                   <span style={{ color: 'var(--text-muted)' }}>- ₹1,240</span>
                 </div>
-              ))}
             </div>
-          </div>
-        </div>
+         </motion.div>
+
+         {/* Holistic Wellness - Purple Theme */}
+         <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="mockup-card mockup-card-purple">
+            <div className="card-header">
+               <h3>Holistic Wellness</h3>
+               <div className="icon-button"><Droplet size={18} /></div>
+            </div>
+
+            <div className="session-card">
+               <div className="session-info">
+                  <div style={{ width: '80px', height: '80px', border: '6px solid rgba(155, 44, 255, 0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                     <div style={{ position: 'absolute', width: '100%', height: '100%', border: '6px solid #9d4edd', borderRadius: '50%', borderLeftColor: 'transparent', borderTopColor: 'transparent', transform: 'rotate(45deg)' }}></div>
+                     <span style={{ fontSize: '1.2rem', fontWeight: 900 }}>75%</span>
+                  </div>
+                  <div>
+                     <p>Daily Hydration</p>
+                     <p>1,500ml / 2,000ml</p>
+                  </div>
+               </div>
+               <div className="live-indicator">
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '0.7rem', color: '#c77dff', fontWeight: 600 }}>Active Goal</div>
+                  </div>
+                  <div className="indicator-dot"></div>
+               </div>
+            </div>
+
+            <div className="data-log-card">
+               <div className="data-log-glow">
+                  <div style={{ display: 'flex', gap: '0.8rem', alignItems: 'center' }}>
+                     <div style={{ background: 'rgba(255,255,255,0.1)', width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                         <Flame size={16} color="#ff6d00" />
+                     </div>
+                     <div>
+                        <h5>Habit Streak</h5>
+                        <p>12 Days Consistent</p>
+                     </div>
+                  </div>
+                  <span className="data-time" style={{ color: '#ff6d00' }}>🔥</span>
+               </div>
+            </div>
+         </motion.div>
+
       </section>
 
-      {/* SEO CONTENT BLOCK */}
-      <section style={{ background: 'var(--bg-surface)', padding: '6rem 0', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem' }}>Improve Your Daily Routine</h2>
-          <div style={{ maxWidth: '800px', margin: '0 auto', color: 'var(--text-muted)', fontSize: '1.2rem', lineHeight: '1.8' }}>
-            <p>
-              Whether you are looking for a <strong>habit tracker app</strong> for students or a professional <strong>daily planner app</strong>, Lunoo is built to adapt. Our platform serves as your <strong>task manager app</strong>, <strong>routine tracker</strong>, and <strong>productivity app</strong>, all in one. Join thousands who have transformed their lives by tracking their habits and staying organized with our simple yet powerful mobile application. 
-              <br/><br/>
-              Available now — <Link to="/features" style={{ color: 'var(--primary)', fontWeight: 600 }}>Explore the best productivity app</Link> to get started on your journey of self-improvement.
-            </p>
+      {/* Feature Showcase Grid */}
+      <section className="features-preview" style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 600 }}>One Platform, Total Clarity.</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Stop jumping between apps. Lunoo integrates everything you need to grow.</p>
           </div>
-        </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              {[
+                  { title: 'Habit Architecture', desc: 'Build routines that stick with gamified streaks and visual heatmaps.', icon: '⚡' },
+                  { title: 'Unified Finance', desc: 'Automatic budget alerts and transaction tracking for financial freedom.', icon: '📈' },
+                  { title: 'Wellness Ecosystem', desc: 'Hydration, sleep, and mood tracking for a holistic view of your health.', icon: '🌿' }
+              ].map((f, i) => (
+                  <div key={i} className="glass-panel" style={{ padding: '2rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{f.icon}</div>
+                      <h4 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: 600 }}>{f.title}</h4>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: '1.6' }}>{f.desc}</p>
+                  </div>
+              ))}
+          </div>
       </section>
-      <FAQ />
+
+      {/* NEW: Trust/Social Proof Section */}
+      <section className="container" style={{ padding: '8rem 2rem', textAlign: 'center' }}>
+         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '6rem', flexWrap: 'wrap', opacity: 0.6 }}>
+                <div>
+                   <h3 style={{ fontSize: '3rem', color: '#ff6d00', fontWeight: 900 }}>50k+</h3>
+                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', letterSpacing: '2px' }}>HUMANS SERVED</p>
+                </div>
+                <div>
+                   <h3 style={{ fontSize: '3rem', color: '#9d4edd', fontWeight: 900 }}>4.9</h3>
+                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', letterSpacing: '2px' }}>APP STORE RATING</p>
+                </div>
+                <div>
+                   <h3 style={{ fontSize: '3rem', color: '#10b981', fontWeight: 900 }}>12M+</h3>
+                   <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', letterSpacing: '2px' }}>HABITS TRACKED</p>
+                </div>
+            </div>
+         </motion.div>
+      </section>
+
+      {/* NEW: Testimonials Section */}
+      <section className="container" style={{ marginBottom: '10rem' }}>
+         <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+            <div className="hero-pill-badge" style={{ marginBottom: '2rem' }}>✦ User Stories</div>
+            <h2 style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>Love from the Sanctuary.</h2>
+            <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>Join 50,000+ high-performers who found their balance with Lunoo.</p>
+         </div>
+
+         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+            {[
+               { name: "Sarah J.", role: "Creative Director", text: "Lunoo transformed how I view my productivity. The low-stress habit tracking is a godsend for my ADHD brain. It doesn't guilt me — it empowers me.", color: "#ff6d00" },
+               { name: "David M.", role: "Fintech Lead", text: "Finally, a finance app that doesn't feel like a spreadsheet. The visual budget architecture helped me save ₹50k in just two months.", color: "#10b981" },
+               { name: "Elena R.", role: "Yoga Instructor", text: "The wellness ecosystem is so beautiful. I track my hydration and mood every day. It's truly a digital sanctum for the soul.", color: "#9d4edd" }
+            ].map((t, idx) => (
+               <motion.div 
+                 key={idx} 
+                 initial={{ opacity: 0, y: 30 }} 
+                 whileInView={{ opacity: 1, y: 0 }} 
+                 viewport={{ once: true }}
+                 transition={{ delay: idx * 0.1, duration: 0.8 }}
+                 className="glass-panel" 
+                 style={{ padding: '3.5rem', position: 'relative', overflow: 'hidden' }}
+               >
+                  <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '8rem', color: 'rgba(255,255,255,0.03)', fontWeight: 900, pointerEvents: 'none' }}>"</div>
+                  <p style={{ fontSize: '1.1rem', color: '#fff', lineHeight: '1.8', marginBottom: '2.5rem', fontStyle: 'italic', position: 'relative' }}>{t.text}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                     <div style={{ width: '40px', height: '40px', background: t.color, borderRadius: '50%', opacity: 0.2 }}></div>
+                     <div>
+                        <h5 style={{ color: '#fff', margin: 0, fontSize: '1.1rem' }}>{t.name}</h5>
+                        <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '0.85rem' }}>{t.role}</p>
+                     </div>
+                  </div>
+               </motion.div>
+            ))}
+         </div>
+      </section>
+
+      {/* NEW: Final CTA Section */}
+      <section className="container" style={{ paddingBottom: '12rem' }}>
+         <div className="glass-panel" style={{ padding: '8rem 4rem', textAlign: 'center', background: 'linear-gradient(135deg, rgba(255,109,0,0.05), rgba(155, 44, 255, 0.05))', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
+               <h2 style={{ fontSize: '4rem', marginBottom: '2rem', color: '#fff' }}>Start Your Journey Today.</h2>
+               <p style={{ fontSize: '1.3rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
+                  The first step toward mastery is creating a space that respects your focus. Download Lunoo and begin your transformation.
+               </p>
+               <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a href="#" className="badge-link">
+                    <AppStoreBadge style={{ height: '54px' }} />
+                  </a>
+                  <a 
+                    href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="badge-link"
+                  >
+                    <PlayStoreBadge style={{ height: '54px' }} />
+                  </a>
+               </div>
+            </motion.div>
+         </div>
+      </section>
     </>
   );
 }

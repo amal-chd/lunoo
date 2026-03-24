@@ -1,49 +1,37 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const isActive = (path: string) => location.pathname === path;
-
   return (
-    <nav className={`navbar ${scrolled ? 'nav-scrolled' : ''}`}>
-      <Link to="/" className="nav-brand">
-        <div className="nav-brand-img" style={{ background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
-          <LIcon size={24} />
-        </div>
+    <nav className="navbar">
+      <Link to="/" className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+        <img src="/logo.png" alt="Lunoo Logo" style={{ height: '36px', filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.4))' }} />
         Lunoo
       </Link>
-
-      <div className="nav-links">
-        <Link to="/" className={isActive('/') ? 'active' : ''}>Home</Link>
-        <Link to="/features" className={isActive('/features') ? 'active' : ''}>Features</Link>
-        <Link to="/philosophy" className={isActive('/philosophy') ? 'active' : ''}>Philosophy</Link>
-        <Link to="/blog" className={isActive('/blog') ? 'active' : ''}>Blog</Link>
-        <Link to="/about" className={isActive('/about') ? 'active' : ''}>Story</Link>
+      
+      <div className="nav-links-container">
+        <div className="nav-links">
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Home
+            </Link>
+            <Link to="/features" className="nav-link">Features</Link>
+            <Link to="/philosophy" className="nav-link">Philosophy</Link>
+            <Link to="/pricing" className="nav-link">Pricing</Link>
+            <Link to="/blog" className="nav-link">Journal</Link>
+        </div>
       </div>
 
       <div className="nav-actions">
-        <button className="btn btn-secondary glass-panel" style={{ padding: '0.6rem 1.4rem', fontSize: '1rem' }}>Log in</button>
-        <button className="btn btn-primary" style={{ padding: '0.6rem 2rem', fontSize: '1rem', fontWeight: 800 }}>Download App</button>
+        <a 
+          href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="glow-pill"
+          style={{ padding: '0.8rem 1.5rem', fontSize: '0.9rem' }}
+        >
+          Download Now
+        </a>
       </div>
     </nav>
-  );
-}
-
-function LIcon({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 7 L7 17 L17 17"></path>
-    </svg>
   );
 }

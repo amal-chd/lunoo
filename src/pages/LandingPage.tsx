@@ -1,36 +1,44 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
-import { GraduationCap, Briefcase, Camera, Rocket, CheckCircle } from 'lucide-react';
 import { AppStoreBadge, PlayStoreBadge } from '../components/Badges';
+import { GraduationCap, Briefcase, Camera, Rocket, CheckCircle2, TrendingUp, Droplet } from 'lucide-react';
 
-const landingData: Record<string, { title: string, subtitle: string, description: string, icon: any, color: string }> = {
+const landingData: Record<string, { title: string, subtitle: string, description: string, icon: any, color: string, glowClass: string, keyFeature: { title: string, desc: string, icon: any } }> = {
   'habit-tracker-for-students': {
-    title: 'The Best habit tracker for students',
-    subtitle: 'Stay on top of lectures, study habits, and personal growth.',
-    description: 'Balancing school and life is hard. Lunoo is the ultimate habit tracker app for students, helping you manage study sessions, track hydration, and maintain consistent routines.',
+    title: 'Focus Mastery for Students',
+    subtitle: 'Stay on top of lectures, study habits, and consistent hydration.',
+    description: 'Balancing school and life is a high-stakes game. Lunoo provides students with a unified dashboard to track study sessions, monitor daily water intake, and build life-long habits.',
     icon: GraduationCap,
-    color: 'var(--primary)'
+    color: '#ff5a1f',
+    glowClass: 'mockup-card-orange',
+    keyFeature: { title: 'Study Flow Timer', desc: 'Integrated Pomodoro sessions to master your focus.', icon: Rocket }
   },
   'habit-tracker-for-entrepreneurs': {
-    title: 'Precision habit tracker for entrepreneurs',
-    subtitle: 'Scale your business by mastering your daily routine.',
-    description: 'Time is your most valuable asset. Lunoo serves as a high-performance productivity app for entrepreneurs who need to track deep work habits and manage busy schedules.',
+    title: 'Financial Freedom for Founders',
+    subtitle: 'Scale your business while mastering your personal cash flow.',
+    description: 'Time and capital are your leverage. Lunoo serves as a high-performance personal bank & habit dashboard for entrepreneurs who need to track spending and manage busy routines.',
     icon: Rocket,
-    color: 'var(--secondary)'
+    color: '#9b2cff',
+    glowClass: 'mockup-card-purple',
+    keyFeature: { title: 'Budget Architecture', desc: 'Real-time expense tracking and budget projections.', icon: TrendingUp }
   },
   'daily-planner-for-professionals': {
-    title: 'Pro-grade daily planner for professionals',
+    title: 'Daily Plan for High Performers',
     subtitle: 'Efficiency meets simplicity. Manage your career with Lunoo.',
-    description: 'Transform your workflow with a professional daily planner app. Lunoo integrates task management and habit tracking to keep you at peak performance throughout the day.',
+    description: 'Transform your workflow into a "Digital Sanctum". Lunoo integrates task management and financial analysis to keep professionals at peak performance throughout the day.',
     icon: Briefcase,
-    color: 'var(--accent-green)'
+    color: '#ff5a1f',
+    glowClass: 'mockup-card-orange',
+    keyFeature: { title: 'Unified Dashboard', desc: 'Everything you need to organize your professional life.', icon: CheckCircle2 }
   },
   'productivity-app-for-creators': {
-    title: 'The #1 productivity app for creators',
-    subtitle: 'Fuel your creativity with consistent daily routines.',
-    description: 'Creativity happens when you make space for it. Lunoo is a tailored productivity app for creators, offering visual habit tracking and flexible task management for your artistic process.',
+    title: 'Dynamic Routines for Creators',
+    subtitle: 'Fuel your creativity with consistent daily wellness.',
+    description: 'Creativity happens when your mind is clear. Lunoo is a tailored optimization app for creators, offering mood check-ins, hydration tracking, and flexible task management.',
     icon: Camera,
-    color: 'var(--accent-orange, #ff9f43)'
+    color: '#9b2cff',
+    glowClass: 'mockup-card-purple',
+    keyFeature: { title: 'Mood & Wellness', desc: 'Holistic logging to keep your creative energy high.', icon: Droplet }
   }
 };
 
@@ -38,9 +46,10 @@ export default function LandingPage() {
   const { slug } = useParams<{ slug: string }>();
   const data = slug ? landingData[slug] : null;
 
-  if (!data) return <div className="container" style={{ paddingTop: '10rem', textAlign: 'center' }}><h1>Page Not Found</h1><Link to="/" className="btn btn-primary">Go Home</Link></div>;
+  if (!data) return <div className="container" style={{ paddingTop: '10rem', textAlign: 'center' }}><h1>Page Not Found</h1><Link to="/" className="btn-white">Go Home</Link></div>;
 
   const Icon = data.icon;
+  const KeyIcon = data.keyFeature.icon;
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -48,63 +57,75 @@ export default function LandingPage() {
   };
 
   return (
-    <div style={{ paddingTop: '10rem' }}>
-      <div className="blob-shape blob-1" style={{ opacity: 0.1 }}></div>
-      
-      <section className="container" style={{ textAlign: 'center', marginBottom: '8rem' }}>
-         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-           <div style={{ width: '100px', height: '100px', background: data.color, borderRadius: '30px', margin: '0 auto 3rem', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', boxShadow: `0 20px 40px ${data.color}33` }}>
-              <Icon size={50} />
-           </div>
-           
-           <h1 style={{ fontSize: '4rem', fontWeight: 900, marginBottom: '2rem', lineHeight: '1.2' }}>{data.title}</h1>
-           <p style={{ fontSize: '1.5rem', color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto 4rem', lineHeight: '1.6' }}>{data.subtitle}</p>
-           
-           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-             <a href="#"><AppStoreBadge style={{ height: '56px' }} /></a>
-             <a href="#"><PlayStoreBadge style={{ height: '56px' }} /></a>
-           </div>
-         </motion.div>
+    <>
+      <section className="hero-wrapper" style={{ paddingBottom: '3rem' }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <div className="hero-pill-badge">
+            <span style={{ color: "var(--text-light)" }}>✦</span> Persona Spotlight
+          </div>
+        </motion.div>
+        
+        <motion.h1 
+          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}
+          className="hero-title"
+        >
+          {data.title}
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          {data.subtitle}
+        </motion.p>
+        
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
+          <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="#" className="badge-link">
+              <AppStoreBadge style={{ height: '48px' }} />
+            </a>
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="badge-link"
+            >
+              <PlayStoreBadge style={{ height: '48px' }} />
+            </a>
+          </div>
+        </motion.div>
       </section>
 
-      <section style={{ padding: '8rem 0', background: 'var(--bg-surface)' }}>
-         <div className="container">
-            <div className="feature-grid">
-               <div className="feature-text">
-                  <h2 style={{ fontSize: '3rem' }}>Why {slug?.replace(/-/g, ' ')}?</h2>
-                  <p style={{ fontSize: '1.2rem', lineHeight: '1.8' }}>{data.description}</p>
-                  
-                  <ul style={{ marginTop: '2.5rem', listStyle: 'none', padding: 0 }}>
-                     <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
-                        <CheckCircle color="var(--accent-green)" /> Optimized daily habit tracker
-                     </li>
-                     <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', fontSize: '1.2rem' }}>
-                        <CheckCircle color="var(--accent-green)" /> Visual daily planner app interface
-                     </li>
-                     <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '1.2rem' }}>
-                        <CheckCircle color="var(--accent-green)" /> Seamless task manager integration
-                     </li>
-                  </ul>
-               </div>
-               
-               <div className="feature-image-box" style={{ background: 'var(--glass-bg)', border: '1px solid var(--glass-border)' }}>
-                  <Icon size={180} color={data.color} opacity={0.2} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
-                  <div className="glass-panel" style={{ padding: '3rem', position: 'relative', zIndex: 1 }}>
-                     <h3 style={{ fontSize: '2rem' }}>The only <br/> productivity app <br/> you need.</h3>
+      {/* Main content grid */}
+      <section className="mockup-grid" style={{ marginBottom: '8rem' }}>
+         <motion.div initial="hidden" animate="visible" variants={fadeUp} className={`mockup-card ${data.glowClass}`} style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', padding: '4rem' }}>
+            
+            <div style={{ width: '80px', height: '80px', background: `rgba(255,255,255,0.05)`, borderRadius: '50%', margin: '0 auto 2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', border: `1px solid ${data.color}55`, boxShadow: `0 0 30px ${data.color}33` }}>
+               <Icon size={40} color={data.color} />
+            </div>
+            
+            <h3 style={{ fontSize: '2rem', marginBottom: '1.5rem', fontWeight: 500, fontFamily: 'Inter', color: '#fff' }}>
+               Why {slug?.split('-').pop()}s love Lunoo?
+            </h3>
+            
+            <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8', margin: '0 auto 3rem', maxWidth: '600px' }}>
+               {data.description}
+            </p>
+
+            <div className="appointment-card" style={{ textAlign: 'left', borderColor: `rgba(255,255,255,0.1)`, maxWidth: '500px', margin: '0 auto' }}>
+               <div className="profile-row" style={{ marginBottom: '0' }}>
+                  <div style={{ background: `rgba(255,255,255,0.1)`, borderRadius: '12px', padding: '10px' }}>
+                     <KeyIcon size={24} color={data.color} />
+                  </div>
+                  <div className="profile-info">
+                     <h4 style={{ fontSize: '1rem' }}>{data.keyFeature.title}</h4>
+                     <p>{data.keyFeature.desc}</p>
                   </div>
                </div>
             </div>
-         </div>
+            
+         </motion.div>
       </section>
-
-      <section className="container" style={{ padding: '8rem 0', textAlign: 'center' }}>
-         <h2 style={{ fontSize: '2.8rem', marginBottom: '2rem' }}>Ready to transform your routine?</h2>
-         <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '4rem' }}>Download Lunoo now and join the community of winners.</p>
-         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#"><AppStoreBadge style={{ height: '60px' }} /></a>
-            <a href="#"><PlayStoreBadge style={{ height: '60px' }} /></a>
-         </div>
-      </section>
-    </div>
+    </>
   );
 }
