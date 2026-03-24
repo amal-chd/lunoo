@@ -8,7 +8,7 @@ export default function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
-      const timer = setTimeout(() => setIsVisible(true), 2000);
+      const timer = setTimeout(() => setIsVisible(true), 2500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -22,37 +22,84 @@ export default function CookieConsent() {
     <AnimatePresence>
       {isVisible && (
         <motion.div 
-          initial={{ y: 100, opacity: 0 }}
+          initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          className="glass-panel"
+          exit={{ y: 50, opacity: 0 }}
           style={{ 
             position: 'fixed', 
             bottom: '2rem', 
-            left: '50%', 
-            transform: 'translateX(-50%)', 
+            left: '0',
+            right: '0',
+            margin: '0 auto',
             zIndex: 10000, 
-            width: 'calc(100% - 4rem)', 
-            maxWidth: '600px', 
-            padding: '1.5rem 2rem', 
+            width: 'calc(100% - 3rem)', 
+            maxWidth: '540px', 
+            padding: '1.25rem 1.5rem', 
             display: 'flex', 
             alignItems: 'center', 
-            gap: '2rem',
-            background: 'rgba(255, 255, 255, 0.9)',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.1)'
+            gap: '1.5rem',
+            background: 'rgba(15, 5, 25, 0.85)',
+            backdropFilter: 'blur(30px)',
+            WebkitBackdropFilter: 'blur(30px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '24px',
+            boxShadow: '0 25px 60px rgba(0,0,0,0.7)',
+            flexDirection: window.innerWidth < 640 ? 'column' : 'row',
+            textAlign: window.innerWidth < 640 ? 'center' : 'left'
           }}
         >
-          <div style={{ background: 'var(--primary-light)', padding: '0.8rem', borderRadius: '12px', color: '#fff' }}>
-            <Cookie size={24} />
+          <div style={{ 
+            background: 'linear-gradient(135deg, var(--secondary), var(--primary))', 
+            padding: '0.75rem', 
+            borderRadius: '16px', 
+            color: '#fff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0
+          }}>
+            <Cookie size={22} />
           </div>
+          
           <div style={{ flex: 1 }}>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.4' }}>
-              We use cookies to improve your experience and analyze our traffic. By clicking "Accept", you agree to our use of cookies.
+            <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.9)', lineHeight: '1.5', margin: 0 }}>
+              We use <span style={{ color: 'var(--primary-light)', fontWeight: 600 }}>cookies</span> to curate your sanctuary. 
+              By browsing, you agree to our neuro-inclusive data practices.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-             <button onClick={handleAccept} className="btn btn-primary" style={{ padding: '0.8rem 1.5rem', fontSize: '0.9rem' }}>Accept</button>
-             <button onClick={() => setIsVisible(false)} style={{ background: 'none', color: 'var(--text-muted)' }}><X size={20} /></button>
+
+          <div style={{ 
+            display: 'flex', 
+            gap: '0.75rem', 
+            flexShrink: 0,
+            width: window.innerWidth < 640 ? '100%' : 'auto'
+          }}>
+             <button 
+               onClick={handleAccept} 
+               className="glow-pill" 
+               style={{ 
+                 padding: '0.6rem 1.75rem', 
+                 fontSize: '0.85rem',
+                 width: window.innerWidth < 640 ? '100%' : 'auto',
+                 justifyContent: 'center'
+               }}
+             >
+               Accept
+             </button>
+             <button 
+               onClick={() => setIsVisible(false)} 
+               style={{ 
+                 background: 'rgba(255,255,255,0.05)', 
+                 color: 'var(--text-muted)',
+                 padding: '0.6rem',
+                 borderRadius: '50%',
+                 display: 'flex',
+                 alignItems: 'center',
+                 justifyContent: 'center'
+               }}
+             >
+               <X size={18} />
+             </button>
           </div>
         </motion.div>
       )}
