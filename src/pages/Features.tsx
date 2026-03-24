@@ -35,7 +35,7 @@ export default function Features() {
       </section>
 
       {/* Bento Grid Concept for Features */}
-      <section className="mockup-grid" style={{ marginBottom: '8rem', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', padding: '0 2rem' }}>
+      <section className="mockup-grid responsive-grid-2" style={{ marginBottom: '4rem', padding: '0 1rem' }}>
          
          {/* Financial Suite - Green Accent */}
          <motion.div {...fadeIn} className="mockup-card mockup-card-orange">
@@ -190,7 +190,7 @@ export default function Features() {
                   Lunoo analyzes your behavioral patterns to provide localized, context-aware suggestions. Whether you're an ADHD mind or a serial entrepreneur, the dashboard adapts to you.
                </p>
                
-               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+               <div className="responsive-grid responsive-grid-3" style={{ gap: '1.5rem', marginTop: '3rem' }}>
                   <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'left', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
                      <h4 style={{ color: '#fff', fontSize: '1.3rem', marginBottom: '1rem' }}>Local AI Processing</h4>
                      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Insights are generated on-device, ensuring your personal data never touches our servers.</p>
@@ -219,7 +219,7 @@ export default function Features() {
                </p>
                <ul style={{ listStyle: 'none', padding: 0, marginTop: '2.5rem' }}>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', color: '#fff' }}>
-                     <CheckSquare size={18} color="#10b981" /> Real-time Supabase Sync
+                      <CheckSquare size={18} color="#10b981" /> Real-time Firebase Sync
                   </li>
                   <li style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', color: '#fff' }}>
                      <CheckSquare size={18} color="#10b981" /> Offline-first Architecture
@@ -229,21 +229,48 @@ export default function Features() {
                   </li>
                </ul>
             </motion.div>
-            
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} style={{ position: 'relative' }}>
-               <div className="glass-panel" style={{ padding: '3rem', borderRadius: '40px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ background: '#000', borderRadius: '25px', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
-                     <div style={{ height: '300px', width: '100%', background: 'linear-gradient(135deg, rgba(155, 44, 255, 0.1), rgba(255, 109, 0, 0.1))', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                         <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📱 💻 ⌚</div>
-                            <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>SYCHRONIZING...</div>
-                         </div>
-                     </div>
+                <motion.div {...fadeIn} transition={{ delay: 0.2 }} style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
+               <div className="glass-panel" style={{ width: '100%', maxWidth: '500px', aspectRatio: '1', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', border: '1px solid rgba(255,255,255,0.05)', background: 'radial-gradient(circle at center, rgba(139, 92, 246, 0.05), transparent)' }}>
+                  {/* Central Node */}
+                  <div style={{ zIndex: 2, background: 'var(--bg-page)', padding: '1.5rem', borderRadius: '50%', border: '2px solid var(--primary-light)', boxShadow: '0 0 30px rgba(139, 92, 246, 0.3)' }}>
+                     <img src="/logo.png" alt="Lunoo" style={{ width: '40px', height: '40px' }} />
                   </div>
+
+                  {/* Orbiting Devices */}
+                  {[
+                    { Icon: Zap, color: '#ff6d00', delay: 0, angle: 0 },
+                    { Icon: Droplet, color: '#3b82f6', delay: 2, angle: 120 },
+                    { Icon: CheckSquare, color: '#10b981', delay: 4, angle: 240 }
+                  ].map((device, i) => (
+                    <motion.div
+                      key={i}
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 20, repeat: Infinity, ease: "linear", delay: device.delay }}
+                      style={{ position: 'absolute', width: '100%', height: '100%', pointerEvents: 'none' }}
+                    >
+                      <div style={{ position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)', pointerEvents: 'auto' }}>
+                         <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)', padding: '12px', borderRadius: '15px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 10px 20px rgba(0,0,0,0.2)' }}>
+                            <device.Icon size={20} color={device.color} />
+                         </div>
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {/* Pulsing Rings */}
+                  <motion.div 
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    style={{ position: 'absolute', width: '60%', height: '60%', border: '1px solid var(--primary-light)', borderRadius: '50%' }}
+                  />
+                  <motion.div 
+                    animate={{ scale: [1, 1.5, 1], opacity: [0.05, 0.2, 0.05] }}
+                    transition={{ duration: 6, repeat: Infinity }}
+                    style={{ position: 'absolute', width: '80%', height: '80%', border: '1px solid var(--primary-light)', borderRadius: '50%' }}
+                  />
                </div>
                
                {/* Decorative Circles */}
-               <div className="glow-purple" style={{ top: '-40px', right: '-40px', width: '200px', height: '200px', zIndex: -1 }} />
+               <div className="glow-purple" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '300px', height: '300px', zIndex: -1, opacity: 0.4 }} />
             </motion.div>
          </div>
       </section>
@@ -286,7 +313,6 @@ export default function Features() {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem', opacity: 0.4 }}>
               <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>FLUTTER</span>
               <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>POSTGRESQL</span>
-              <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>SUPABASE</span>
               <span style={{ fontSize: '1.2rem', fontWeight: 900, fontFamily: 'Outfit' }}>FIREBASE</span>
           </div>
       </section>

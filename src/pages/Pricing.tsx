@@ -72,7 +72,7 @@ export default function Pricing() {
         </motion.p>
       </section>
 
-      <section className="mockup-grid" style={{ marginBottom: '8rem', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', padding: '0 2rem', gap: '2rem' }}>
+      <section className="mockup-grid responsive-grid-3" style={{ marginBottom: '8rem', padding: '0 1rem', gap: '2rem' }}>
          {plans.map((plan, i) => (
            <motion.div 
              key={plan.name}

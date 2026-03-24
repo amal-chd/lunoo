@@ -97,8 +97,8 @@ export default function LandingPage() {
       </section>
 
       {/* Main content grid */}
-      <section className="mockup-grid" style={{ marginBottom: '8rem' }}>
-         <motion.div initial="hidden" animate="visible" variants={fadeUp} className={`mockup-card ${data.glowClass}`} style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center', padding: '4rem' }}>
+      <section className="mockup-grid responsive-grid-3" style={{ marginBottom: '8rem', padding: '0 1rem', gap: '2rem' }}>
+         <motion.div initial="hidden" animate="visible" variants={fadeUp} className={`mockup-card ${data.glowClass}`} style={{ width: '100%', maxWidth: '800px', margin: '0 auto', textAlign: 'center', padding: 'clamp(2rem, 8vw, 4rem)' }}>
             
             <div style={{ width: '80px', height: '80px', background: `rgba(255,255,255,0.05)`, borderRadius: '50%', margin: '0 auto 2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', border: `1px solid ${data.color}55`, boxShadow: `0 0 30px ${data.color}33` }}>
                <Icon size={40} color={data.color} />

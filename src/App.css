@@ -61,23 +61,27 @@
 .navbar {
   position: sticky;
   top: 1.5rem;
-  width: auto;
-  min-width: 600px;
-  max-width: fit-content;
-  height: auto;
+  width: min(90%, 1200px);
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   z-index: 1000;
   background: rgba(15, 5, 25, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
-  gap: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    top: 1rem;
+    padding: 0.5rem 1rem;
+    width: 95%;
+  }
 }
 
 .nav-brand {
@@ -217,11 +221,18 @@
 /* UI MOCKUP CARDS */
 .mockup-grid {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .mockup-grid {
+    padding: 0 1rem;
+  }
 }
 
 .mockup-card {

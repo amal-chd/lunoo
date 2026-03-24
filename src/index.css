@@ -95,9 +95,15 @@ button:active {
 /* Reusable Utilites */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 5vw;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
 }
 
 /* Glow Pill Buttons (like "Smart Scheduler" and "Book a Demo") */
@@ -163,6 +169,33 @@ button:active {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Responsive Grid Utilities */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 1), 1fr);
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid-2 { --grid-cols: 2; }
+  .responsive-grid-3 { --grid-cols: 3; }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid-4 { --grid-cols: 4; }
+}
+
+.mobile-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .mobile-stack {
+    flex-direction: row;
+  }
 }
 
 /* Footer Styling */
