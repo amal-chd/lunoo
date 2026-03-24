@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Heart, Instagram, Twitter, MessageSquare, Mail, MapPin } from 'lucide-react';
+import { Heart, Instagram, Twitter, MessageSquare } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AppStoreBadge, PlayStoreBadge } from './Badges';
 
