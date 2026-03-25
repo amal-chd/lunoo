@@ -25,6 +25,7 @@ export default function CookieConsent() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 50, opacity: 0 }}
+          className="cookie-banner"
           style={{ 
             position: 'fixed', 
             bottom: '2rem', 
@@ -44,8 +45,6 @@ export default function CookieConsent() {
             border: '1px solid rgba(255, 255, 255, 0.1)',
             borderRadius: '24px',
             boxShadow: '0 25px 60px rgba(0,0,0,0.7)',
-            flexDirection: window.innerWidth < 640 ? 'column' : 'row',
-            textAlign: window.innerWidth < 640 ? 'center' : 'left'
           }}
         >
           <div style={{ 
@@ -68,11 +67,10 @@ export default function CookieConsent() {
             </p>
           </div>
 
-          <div style={{ 
+          <div className="cookie-actions" style={{ 
             display: 'flex', 
             gap: '0.75rem', 
             flexShrink: 0,
-            width: window.innerWidth < 640 ? '100%' : 'auto'
           }}>
              <button 
                onClick={handleAccept} 
@@ -80,7 +78,6 @@ export default function CookieConsent() {
                style={{ 
                  padding: '0.6rem 1.75rem', 
                  fontSize: '0.85rem',
-                 width: window.innerWidth < 640 ? '100%' : 'auto',
                  justifyContent: 'center'
                }}
              >
@@ -88,6 +85,7 @@ export default function CookieConsent() {
              </button>
              <button 
                onClick={() => setIsVisible(false)} 
+               className="cookie-close-btn"
                style={{ 
                  background: 'rgba(255,255,255,0.05)', 
                  color: 'var(--text-muted)',

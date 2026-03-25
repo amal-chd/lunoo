@@ -185,7 +185,7 @@ export default function Features() {
                <div className="icon-button" style={{ margin: '0 auto 2rem', width: '60px', height: '60px', background: 'rgba(139, 92, 246, 0.1)' }}>
                   <Zap size={30} color="var(--primary-light)" />
                </div>
-               <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>Persona-Driven Insights</h2>
+               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1.5rem', color: '#fff' }}>Persona-Driven Insights</h2>
                <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
                   Lunoo analyzes your behavioral patterns to provide localized, context-aware suggestions. Whether you're an ADHD mind or a serial entrepreneur, the dashboard adapts to you.
                </p>
@@ -213,7 +213,7 @@ export default function Features() {
          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '6rem', alignItems: 'center' }}>
             <motion.div {...fadeIn}>
                <div className="hero-pill-badge" style={{ marginBottom: '2rem' }}>✦ Multi-Platform</div>
-               <h2 style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>Synchronized Sanctum.</h2>
+               <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', marginBottom: '1.5rem' }}>Synchronized Sanctum.</h2>
                <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
                   Start a habit on your iPhone, check your budget on your Android tablet, and view your focus stats on the web. Lunoo's hybrid backend ensures sub-second latency across all your nodes.
                </p>
@@ -277,10 +277,10 @@ export default function Features() {
 
       {/* NEW: Enterprise Security Section */}
       <section className="container" style={{ marginBottom: '10rem' }}>
-         <div className="glass-panel" style={{ padding: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+         <div className="glass-panel" style={{ padding: 'clamp(2.5rem, 5vw, 4rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
             <div>
                <Shield size={40} color="#10b981" style={{ marginBottom: '1.5rem' }} />
-               <h3 style={{ color: '#fff', fontSize: '1.8rem', marginBottom: '1rem' }}>Your Fortress.</h3>
+               <h3 style={{ color: '#fff', fontSize: 'clamp(1.5rem, 4vw, 1.8rem)', marginBottom: '1rem' }}>Your Fortress.</h3>
                <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>We utilize industry-leading protocols to ensure your data remains your property. No backdoors, no selling to third parties.</p>
             </div>
             

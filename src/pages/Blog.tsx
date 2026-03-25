@@ -77,38 +77,40 @@ export default function Blog() {
         </motion.div>
 
         {/* Category Filters - High Gloss Segmented Control */}
-        <div style={{ 
+        <div className="mobile-scroll-container" style={{ 
           display: 'flex', 
-          justifyContent: 'center', 
+          justifyContent: window.innerWidth < 768 ? 'flex-start' : 'center', 
           gap: '0.8rem', 
           padding: '0.8rem',
           background: 'rgba(255,109,0,0.08)',
           borderRadius: '100px',
-          maxWidth: 'fit-content',
-          margin: '0 auto 6rem',
+          maxWidth: '100%',
+          overflowX: 'auto',
+          margin: '0 auto 4rem',
           border: '2px solid rgba(255,109,0,0.3)',
           backdropFilter: 'blur(30px)',
-          flexWrap: 'wrap',
-          boxShadow: '0 30px 60px rgba(0,0,0,0.4)'
+          boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
+          scrollbarWidth: 'none'
         }}>
           {categories.map(category => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
               style={{
-                padding: '1.2rem 3rem',
+                padding: '0.8rem 2rem',
                 borderRadius: '100px',
                 border: 'none',
                 background: activeCategory === category ? 'var(--secondary)' : 'rgba(255,255,255,0.03)',
                 color: '#fff',
-                fontSize: '1.1rem',
+                fontSize: '0.9rem',
                 fontWeight: 800,
                 cursor: 'pointer',
                 transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                 position: 'relative',
                 boxShadow: activeCategory === category ? '0 10px 30px rgba(255, 109, 0, 0.5)' : 'none',
                 textTransform: 'uppercase',
-                letterSpacing: '1px'
+                letterSpacing: '1px',
+                whiteSpace: 'nowrap'
               }}
             >
               <span style={{ position: 'relative', zIndex: 2 }}>{category}</span>
@@ -119,7 +121,7 @@ export default function Blog() {
 
       {/* Blog Grid */}
       <section className="container" style={{ position: 'relative', zIndex: 5 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '4rem' }}>
+        <div className="responsive-grid responsive-grid-2" style={{ gap: '2rem' }}>
           <AnimatePresence mode="popLayout">
             {filteredPosts.map((post) => (
               <motion.div
@@ -163,14 +165,14 @@ export default function Blog() {
                       </span>
                     </div>
                   </div>
-                  <div style={{ padding: '3.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.95rem', marginBottom: '1.8rem' }}>
-                      <Clock size={18} /> <span>{post.readTime} read</span>
-                      <span style={{ margin: '0 0.5rem' }}>•</span>
+                  <div style={{ padding: 'clamp(1.5rem, 5vw, 3.5rem)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', marginBottom: '1.2rem' }}>
+                      <Clock size={16} /> <span>{post.readTime} read</span>
+                      <span style={{ margin: '0 0.3rem' }}>•</span>
                       <span>{post.date}</span>
                     </div>
-                    <h3 style={{ fontSize: '2.2rem', color: '#fff', marginBottom: '1.5rem', lineHeight: '1.2', fontFamily: 'Outfit', fontWeight: 700 }}>{post.title}</h3>
-                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.15rem', lineHeight: '1.8', marginBottom: '3rem', flex: 1 }}>{post.excerpt}</p>
+                    <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', color: '#fff', marginBottom: '1rem', lineHeight: '1.2', fontFamily: 'Outfit', fontWeight: 700 }}>{post.title}</h3>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(1rem, 3vw, 1.15rem)', lineHeight: '1.6', marginBottom: '2rem', flex: 1 }}>{post.excerpt}</p>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--secondary)', fontWeight: 800, fontSize: '1.1rem', marginTop: 'auto' }}>
                       Read Journey <ArrowRight size={24} />
                     </div>
@@ -185,13 +187,13 @@ export default function Blog() {
       {/* Newsletter - Epic Design */}
       <section className="container" style={{ marginTop: '15rem' }}>
         <div className="glass-panel" style={{ 
-          padding: '10rem 4rem', 
+          padding: 'clamp(3rem, 10vw, 10rem) clamp(1.5rem, 5vw, 4rem)', 
           textAlign: 'center', 
           border: '2px solid rgba(255,109,0,0.4)', 
-          borderRadius: '60px',
+          borderRadius: 'clamp(30px, 8vw, 60px)',
           background: 'radial-gradient(circle at center, rgba(255,109,0,0.1) 0%, transparent 70%), rgba(255,255,255,0.01)'
         }}>
-          <h2 style={{ fontSize: '4.5rem', marginBottom: '2rem', color: '#fff', fontFamily: 'Outfit', fontWeight: 800 }}>Master Your <span className="gradient-text">Focus</span></h2>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', marginBottom: '1.5rem', color: '#fff', fontFamily: 'Outfit', fontWeight: 800 }}>Master Your <span className="gradient-text">Focus</span></h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.4rem', marginBottom: '5rem', maxWidth: '700px', margin: '0 auto 5rem' }}>
             Exclusive weekly guides on digital minimalism, wealth architecture, and high-performance habits.
           </p>

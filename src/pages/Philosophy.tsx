@@ -33,8 +33,8 @@ export default function Philosophy() {
       </section>
 
       {/* Philosophy Points - Alternating Side-by-Side */}
-      <section className="container" style={{ padding: '8rem 2rem' }}>
-         <div style={{ display: 'flex', flexDirection: 'column', gap: '10rem' }}>
+      <section className="container" style={{ padding: 'clamp(4rem, 10vw, 8rem) 1.5rem' }}>
+         <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(4rem, 12vw, 10rem)' }}>
             
             {/* Point 1 */}
             <motion.div 
@@ -42,8 +42,8 @@ export default function Philosophy() {
                style={{ display: 'flex', gap: '4rem', alignItems: 'center', flexWrap: 'wrap' }}
             >
                <div style={{ flex: 1, minWidth: '300px' }}>
-                  <div className="icon-button" style={{ color: '#ff6d00', background: 'rgba(255, 109, 0, 0.1)', borderColor: 'rgba(255, 109, 0, 0.2)', marginBottom: '2rem' }}><Brain size={32} /></div>
-                  <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#fff' }}>The Dopamine Loop</h2>
+                  <div className="icon-button" style={{ color: '#ff6d00', background: 'rgba(255, 109, 0, 0.1)', borderColor: 'rgba(255, 109, 0, 0.2)', marginBottom: '1.5rem' }}><Brain size={32} /></div>
+                  <h2 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '1rem', color: '#fff' }}>The Dopamine Loop</h2>
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
                      Most apps use aggressive notifications and "shaming" reminders. Lunoo uses <strong>Focus Design</strong>—soft hues and gentle nudges that encourage action without the underlying anxiety. We believe your tools should support you, not stress you.
                   </p>
@@ -74,8 +74,8 @@ export default function Philosophy() {
                   </div>
                </div>
                <div style={{ flex: 1, minWidth: '300px' }}>
-                  <div className="icon-button" style={{ color: '#9d4edd', background: 'rgba(157, 78, 221, 0.1)', borderColor: 'rgba(157, 78, 221, 0.2)', marginBottom: '2rem' }}><Heart size={32} /></div>
-                  <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: '#fff' }}>Kind Productivity</h2>
+                  <div className="icon-button" style={{ color: '#9d4edd', background: 'rgba(157, 78, 221, 0.1)', borderColor: 'rgba(157, 78, 221, 0.2)', marginBottom: '1.5rem' }}><Heart size={32} /></div>
+                  <h2 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '1rem', color: '#fff' }}>Kind Productivity</h2>
                   <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', lineHeight: '1.8' }}>
                      Life isn't a straight line. Lunoo is designed to be flexible. If you miss a day, we don't punish you. We offer gentle encouragement to step back into your flow whenever you're ready. Growth is a journey, not a sprint.
                   </p>
@@ -88,7 +88,7 @@ export default function Philosophy() {
       {/* Science Grid */}
       <section style={{ background: 'rgba(255,255,255,0.01)', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '8rem 2rem' }}>
           <div className="container">
-            <h3 style={{ fontSize: '2.5rem', marginBottom: '5rem', textAlign: 'center', color: '#fff' }}>Rooted in Science</h3>
+            <h3 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '3rem', textAlign: 'center', color: '#fff' }}>Rooted in Science</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
                {[
                   { icon: Sparkles, color: '#ff6d00', title: 'Low-Stress UI', desc: 'Minimizing color-coded stressors and noisy visual patterns typical in traditional suites.' },
@@ -116,14 +116,14 @@ export default function Philosophy() {
       <section className="container" style={{ padding: '10rem 2rem', textAlign: 'center' }}>
          <motion.div initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <div className="hero-pill-badge" style={{ marginBottom: '3rem' }}>✦ Our Manifesto</div>
-            <h2 style={{ fontSize: '4.5rem', marginBottom: '4rem', color: '#fff', letterSpacing: '-2px' }}>A Space for<br/>Your Soul.</h2>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', marginBottom: '2rem', color: '#fff', letterSpacing: '-2px' }}>A Space for<br/>Your Soul.</h2>
             
-            <div className="glass-panel" style={{ maxWidth: '900px', margin: '0 auto', padding: '6rem 4rem', background: 'linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05))' }}>
-               <p style={{ fontSize: '1.8rem', color: '#fff', lineHeight: '1.6', marginBottom: '5rem', fontWeight: 300, fontStyle: 'italic' }}>
+            <div className="glass-panel" style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(2rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem)', background: 'linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.05))' }}>
+               <p style={{ fontSize: 'clamp(1.2rem, 4vw, 1.8rem)', color: '#fff', lineHeight: '1.6', marginBottom: '3rem', fontWeight: 300, fontStyle: 'italic' }}>
                   "We reject the idea that productivity must be loud, aggressive, or anxiety-inducing. We believe that when your mind is at peace, your true potential emerges."
                </p>
 
-               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '4rem', textAlign: 'left' }}>
+               <div className="responsive-grid responsive-grid-3" style={{ textAlign: 'left' }}>
                   <div>
                      <h4 style={{ color: "var(--primary-light)", fontSize: '1.4rem', marginBottom: '1rem' }}>No Noise.</h4>
                      <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>Every pixel on the screen serves a purpose. If it doesn't help you grow, it's not here.</p>

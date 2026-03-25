@@ -44,7 +44,7 @@ export default function Home() {
 
         <div className="hero-partners">
           <p>BUILT FOR HIGH PERFORMERS</p>
-          <div className="partner-logos">
+          <div className="partner-logos" style={{ gap: 'clamp(1rem, 5vw, 4rem)', justifyContent: 'center' }}>
              <span>HABITS</span> • <span>FINANCE</span> • <span>WELLNESS</span> • <span>FOCUS</span>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function Home() {
       {/* Feature Showcase Grid */}
       <section className="features-preview" style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 600 }}>One Platform, Total Clarity.</h2>
+              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 2.5rem)', marginBottom: '1rem', fontWeight: 600 }}>One Platform, Total Clarity.</h2>
               <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Stop jumping between apps. Lunoo integrates everything you need to grow.</p>
           </div>
           
@@ -182,7 +182,7 @@ export default function Home() {
       <section className="container" style={{ marginBottom: '10rem' }}>
          <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
             <div className="hero-pill-badge" style={{ marginBottom: '2rem' }}>✦ User Stories</div>
-            <h2 style={{ fontSize: '3.5rem', marginBottom: '2rem' }}>Love from the Sanctuary.</h2>
+            <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 3.5rem)', marginBottom: '1.5rem' }}>Love from the Sanctuary.</h2>
             <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>Join 50,000+ high-performers who found their balance with Lunoo.</p>
          </div>
 
@@ -219,7 +219,7 @@ export default function Home() {
       <section className="container" style={{ paddingBottom: '12rem' }}>
          <div className="glass-panel" style={{ padding: '8rem 4rem', textAlign: 'center', background: 'linear-gradient(135deg, rgba(255,109,0,0.05), rgba(155, 44, 255, 0.05))', border: '1px solid rgba(255,255,255,0.05)' }}>
             <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-               <h2 style={{ fontSize: '4rem', marginBottom: '2rem', color: '#fff' }}>Start Your Journey Today.</h2>
+               <h2 style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', marginBottom: '1.5rem', color: '#fff' }}>Start Your Journey Today.</h2>
                <p style={{ fontSize: '1.3rem', color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 4rem', lineHeight: '1.8' }}>
                   The first step toward mastery is creating a space that respects your focus. Download Lunoo and begin your transformation.
                </p>

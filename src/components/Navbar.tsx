@@ -1,27 +1,45 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu, X, Home as HomeIcon } from 'lucide-react';
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <nav className="navbar">
-      <Link to="/" className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+      <Link to="/" className="nav-brand" onClick={closeMenu}>
         <img src="/logo.png" alt="Lunoo Logo" style={{ height: '36px', filter: 'drop-shadow(0 0 10px rgba(139, 92, 246, 0.4))' }} />
         Lunoo
       </Link>
       
-      <div className="nav-links-container">
+      <div className={`nav-links-container ${isOpen ? 'open' : ''}`}>
         <div className="nav-links">
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <Link to="/" onClick={closeMenu} className="nav-link home-link">
+              <HomeIcon size={14} />
               Home
             </Link>
-            <Link to="/features" className="nav-link">Features</Link>
-            <Link to="/philosophy" className="nav-link">Philosophy</Link>
-            <Link to="/pricing" className="nav-link">Pricing</Link>
-            <Link to="/blog" className="nav-link">Journal</Link>
+            <Link to="/features" className="nav-link" onClick={closeMenu}>Features</Link>
+            <Link to="/philosophy" className="nav-link" onClick={closeMenu}>Philosophy</Link>
+            <Link to="/pricing" className="nav-link" onClick={closeMenu}>Pricing</Link>
+            <Link to="/blog" className="nav-link" onClick={closeMenu}>Journal</Link>
+        </div>
+        
+        <div className="nav-mobile-actions">
+          <a 
+            href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="glow-pill"
+          >
+            Download Now
+          </a>
         </div>
       </div>
 
-      <div className="nav-actions">
+      <div className="nav-actions desktop-only">
         <a 
           href="https://play.google.com/store/apps/details?id=com.lunoo.app" 
           target="_blank" 
@@ -32,6 +50,10 @@ export default function Navbar() {
           Download Now
         </a>
       </div>
+
+      <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle Menu">
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
     </nav>
   );
 }
