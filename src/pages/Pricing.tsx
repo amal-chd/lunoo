@@ -18,10 +18,10 @@ export default function Pricing() {
       highlight: false
     },
     {
-      name: "Pro",
-      price: "$9",
+      name: "Monthly",
+      price: "$9.99",
       period: "/month",
-      description: "The complete Digital Sanctum experience.",
+      description: "Flexible access to all premium features.",
       features: [
         "Everything in Free", 
         "Unified Financial Suite", 
@@ -29,21 +29,28 @@ export default function Pricing() {
         "Visual Insight Heatmaps", 
         "Custom Focus Sessions", 
         "Priority Syncing", 
-        "Early Beta Access"
+        "14-Day Free Trial"
       ],
-      button: "Try Pro",
+      button: "Try Monthly",
       accent: "#9d4edd",
-      highlight: true
+      highlight: false
     },
     {
-      name: "Lifetime",
-      price: "$99",
-      period: "/once",
-      description: "A lifetime commitment to your growth.",
-      features: ["All Pro features forever", "Exclusive Lunoo Badge", "Direct Support Channel", "Founding Member Status", "Offline Mode Access"],
-      button: "Claim Lifetime",
+      name: "Yearly",
+      price: "$89.99",
+      period: "/year",
+      description: "The complete Digital Sanctum experience.",
+      features: [
+        "All Premium Features",
+        "Best Value (Save 25%)",
+        "Exclusive Lunoo Badge",
+        "Priority Support",
+        "Founding Member Status",
+        "14-Day Free Trial"
+      ],
+      button: "Try Yearly",
       accent: "#10b981",
-      highlight: false
+      highlight: true
     }
   ];
 
@@ -94,8 +101,8 @@ export default function Pricing() {
               <div style={{ marginBottom: '2rem' }}>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: plan.accent, marginBottom: '0.5rem' }}>
                     {plan.name === 'Free' && <Shield size={18} />}
-                    {plan.name === 'Pro' && <Zap size={18} />}
-                    {plan.name === 'Lifetime' && <Rocket size={18} />}
+                    {plan.name === 'Monthly' && <Zap size={18} />}
+                    {plan.name === 'Yearly' && <Rocket size={18} />}
                     <h3 style={{ margin: 0, fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{plan.name}</h3>
                  </div>
                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem' }}>
