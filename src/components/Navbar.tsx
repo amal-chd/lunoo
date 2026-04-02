@@ -24,7 +24,6 @@ export default function Navbar() {
             <Link to="/features" className="nav-link" onClick={closeMenu}>Features</Link>
             <Link to="/philosophy" className="nav-link" onClick={closeMenu}>Philosophy</Link>
             <Link to="/pricing" className="nav-link" onClick={closeMenu}>Pricing</Link>
-            <Link to="/blog" className="nav-link" onClick={closeMenu}>Journal</Link>
         </div>
         
         <div className="nav-mobile-actions">

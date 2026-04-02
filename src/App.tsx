@@ -7,8 +7,6 @@ import Home from './pages/Home';
 import Features from './pages/Features';
 import Philosophy from './pages/Philosophy';
 import About from './pages/About';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
 import LandingPage from './pages/LandingPage';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -30,8 +28,6 @@ function AnimatedRoutes() {
         <Route path="/features" element={<PageWrapper><Features /></PageWrapper>} />
         <Route path="/philosophy" element={<PageWrapper><Philosophy /></PageWrapper>} />
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-        <Route path="/blog" element={<PageWrapper><Blog /></PageWrapper>} />
-        <Route path="/blog/:slug" element={<PageWrapper><BlogPost /></PageWrapper>} />
         <Route path="/pricing" element={<PageWrapper><Pricing /></PageWrapper>} />
         <Route path="/persona/:slug" element={<PageWrapper><LandingPage /></PageWrapper>} />
         <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />

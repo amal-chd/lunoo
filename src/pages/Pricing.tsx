@@ -19,7 +19,7 @@ export default function Pricing() {
     },
     {
       name: "Pro",
-      price: "$9",
+      price: "$9.99",
       period: "/month",
       description: "The complete Digital Sanctum experience.",
       features: [
@@ -37,10 +37,10 @@ export default function Pricing() {
     },
     {
       name: "Pro Yearly",
-      price: "$59",
+      price: "$59.99",
       period: "/year",
       description: "Better value for long-term growth mastery.",
-      features: ["All Pro features included", "Exclusive Premium Badge", "Direct Priority Support", "Full Offline Access", "Save over 45% vs monthly"],
+      features: ["All Pro features included", "Exclusive Premium Badge", "Direct Priority Support", "Full Offline Access", "Save over 50% vs monthly"],
       button: "Get Yearly",
       accent: "#10b981",
       highlight: false
@@ -95,7 +95,7 @@ export default function Pricing() {
                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: plan.accent, marginBottom: '0.5rem' }}>
                     {plan.name === 'Free' && <Shield size={18} />}
                     {plan.name === 'Pro' && <Zap size={18} />}
-                    {plan.name === 'Lifetime' && <Rocket size={18} />}
+                    {plan.name === 'Pro Yearly' && <Rocket size={18} />}
                     <h3 style={{ margin: 0, fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{plan.name}</h3>
                  </div>
                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem' }}>

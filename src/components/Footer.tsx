@@ -56,7 +56,6 @@ export default function Footer() {
             <Link to="/features">Features</Link>
             <Link to="/pricing">Pricing</Link>
             <Link to="/philosophy">Philosophy</Link>
-            <Link to="/blog">Journal</Link>
           </div>
 
           <div className="footer-col">
