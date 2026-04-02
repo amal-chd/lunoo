@@ -18,10 +18,10 @@ export default function Pricing() {
       highlight: false
     },
     {
-      name: "Monthly",
-      price: "$9.99",
+      name: "Pro",
+      price: "$9",
       period: "/month",
-      description: "Flexible access to all premium features.",
+      description: "The complete Digital Sanctum experience.",
       features: [
         "Everything in Free", 
         "Unified Financial Suite", 
@@ -29,28 +29,21 @@ export default function Pricing() {
         "Visual Insight Heatmaps", 
         "Custom Focus Sessions", 
         "Priority Syncing", 
-        "14-Day Free Trial"
+        "Early Beta Access"
       ],
-      button: "Try Monthly",
+      button: "Try Pro",
       accent: "#9d4edd",
-      highlight: false
+      highlight: true
     },
     {
-      name: "Yearly",
-      price: "$89.99",
+      name: "Pro Yearly",
+      price: "$59",
       period: "/year",
-      description: "The complete Digital Sanctum experience.",
-      features: [
-        "All Premium Features",
-        "Best Value (Save 25%)",
-        "Exclusive Lunoo Badge",
-        "Priority Support",
-        "Founding Member Status",
-        "14-Day Free Trial"
-      ],
-      button: "Try Yearly",
+      description: "Better value for long-term growth mastery.",
+      features: ["All Pro features included", "Exclusive Premium Badge", "Direct Priority Support", "Full Offline Access", "Save over 45% vs monthly"],
+      button: "Get Yearly",
       accent: "#10b981",
-      highlight: true
+      highlight: false
     }
   ];
 
@@ -101,8 +94,8 @@ export default function Pricing() {
               <div style={{ marginBottom: '2rem' }}>
                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: plan.accent, marginBottom: '0.5rem' }}>
                     {plan.name === 'Free' && <Shield size={18} />}
-                    {plan.name === 'Monthly' && <Zap size={18} />}
-                    {plan.name === 'Yearly' && <Rocket size={18} />}
+                    {plan.name === 'Pro' && <Zap size={18} />}
+                    {plan.name === 'Lifetime' && <Rocket size={18} />}
                     <h3 style={{ margin: 0, fontSize: '1.1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>{plan.name}</h3>
                  </div>
                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.3rem' }}>

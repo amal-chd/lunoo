@@ -28,7 +28,7 @@ export default function Home() {
         
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}>
           <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href="#" className="badge-link">
+            <a href="https://apps.apple.com/in/app/lunoo-habit-life-tracker/id6760951560" target="_blank" rel="noopener noreferrer" className="badge-link">
               <AppStoreBadge style={{ height: '48px' }} />
             </a>
             <a 
@@ -224,7 +224,7 @@ export default function Home() {
                   The first step toward mastery is creating a space that respects your focus. Download Lunoo and begin your transformation.
                </p>
                <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="#" className="badge-link">
+                  <a href="https://apps.apple.com/in/app/lunoo-habit-life-tracker/id6760951560" target="_blank" rel="noopener noreferrer" className="badge-link">
                     <AppStoreBadge style={{ height: '54px' }} />
                   </a>
                   <a 

@@ -29,7 +29,7 @@ export default function Footer() {
              Join the sanctuary. Optimize your habits and finances with Lunoo.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-             <a href="#" className="badge-link"><AppStoreBadge style={{ height: '40px' }} /></a>
+             <a href="https://apps.apple.com/in/app/lunoo-habit-life-tracker/id6760951560" target="_blank" rel="noopener noreferrer" className="badge-link"><AppStoreBadge style={{ height: '40px' }} /></a>
              <a href="https://play.google.com/store/apps/details?id=com.lunoo.app" target="_blank" rel="noopener noreferrer" className="badge-link"><PlayStoreBadge style={{ height: '40px' }} /></a>
           </div>
         </motion.div>
